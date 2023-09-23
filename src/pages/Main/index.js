@@ -40,9 +40,11 @@ class Main extends Component {
           </Link> 
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
-          Orders
-        </a>
+          <Link to="/orders" onClick={() => this.handleClickSidebar('orders')}>
+              <div class={this.state.activePage === 'orders' ? "nav-link active" : "nav-link"} aria-current="page">
+                  Orders
+              </div>
+          </Link>
       </li>
       <li>
         <a href="#" class="nav-link text-white">
