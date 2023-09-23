@@ -30,35 +30,35 @@ handleClickSidebar = (pages) => {
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
         <Link to="/home" onClick={() => this.handleClickSidebar('home')} Link style={{textDecoration: 'none'}}>
-            <div class={this.state.activePage === 'home' ? "nav-link active" : "nav-link"} aria-current="page">
+            <div class={this.state.activePage === 'home' ? "nav-link active" : "text-white nav-link"} aria-current="page">
             Home
             </div>
         </Link>
       </li>
       <li>
         <Link to="/dashboard" onClick={() => this.handleClickSidebar('dashboard')} Link style={{textDecoration: 'none'}}>
-            <div class={this.state.activePage === 'dashboard' ? "nav-link active" : "nav-link"}>
+            <div class={this.state.activePage === 'dashboard' ? "nav-link active" : "text-white nav-link"}>
             Dashboard
             </div>
         </Link>
       </li>
       <li>
         <Link to="/orders"  onClick={() => this.handleClickSidebar('orders')} Link style={{textDecoration: 'none'}}>
-            <div class={this.state.activePage === 'orders' ? "nav-link active" : "nav-link"}>
+            <div class={this.state.activePage === 'orders' ? "nav-link active" : "text-white nav-link"}>
             Orders
             </div>
         </Link>
       </li>
       <li>
         <Link to="/products"  onClick={() => this.handleClickSidebar('products')} Link style={{textDecoration: 'none'}}>
-            <div class={this.state.activePage === 'products' ? "nav-link active" : "nav-link"}>
+            <div class={this.state.activePage === 'products' ? "nav-link active" : "text-white nav-link"}>
             Products
             </div>
         </Link>
       </li>
       <li>
         <Link to="/customers"  onClick={() => this.handleClickSidebar('customers')} Link style={{textDecoration: 'none'}}>
-            <div class={this.state.activePage === 'customers' ? "nav-link active" : "nav-link"}>
+            <div class={this.state.activePage === 'customers' ? "nav-link active" : "text-white nav-link"}>
             Customers
             </div>
         </Link>
