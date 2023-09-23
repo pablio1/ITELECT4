@@ -3,15 +3,18 @@ import { Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import Main from './pages/Main';
 
 class App extends Component {
     render() {
         return (
             <Switch>
-                <Route path="/" component = {Login} />
+                {/* <Route path="/" component = {Login} /> */}
                 <Route path="/login" component = {Login}  />
                 <Route path="/register" component = {Register}  />
                 <Route path="/dashboard" component = {Dashboard} />
+                <Route path="/main" component = {Main} />
+
             </Switch>
         );
     }
