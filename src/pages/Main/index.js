@@ -1,24 +1,43 @@
 import React, { Component } from 'react';
+import {Link, Switch, Route} from 'react-router-dom';
+import Dashboard from '../Dashboard';
 
 class Main extends Component {
+    state = { activePage: ''}
+    componentDidMount = () => {
+        this.setState({
+            activePage: 'dashboard'
+        })
+    }
+
+    handleClickSidebar = (page) => {
+        this.setState({
+            activePage: page
+        })
+    }
+
     render() {
         return (
-            <div>
-                <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style= {{width: '280px', height: '100vh'}}>
+            <div class="row">
+                <div class="col-3 text-white bg-dark" style= {{height: '100vh'}}>
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
       <span class="fs-4">Sidebar</span>
     </a>
     <hr/>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="#" class="nav-link active" aria-current="page">
-          Home
-        </a>
+            	<Link to="/home" onClick={() => this.handleClickSidebar('home')}>
+                    <div class={this.state.activePage === 'home' ? "nav-link active": "nav-link"} aria-current="page">
+                        Home
+                    </div>
+                </Link> 
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
-          Dashboard
-        </a>
+      <Link to="/dashboard" onClick={() => this.handleClickSidebar('dashboard')}>
+                    <div class={this.state.activePage === 'home' ? "nav-link active" : "nav-link"} aria-current="page">
+                        Dashboard
+                    </div>
+                </Link> 
       </li>
       <li>
         <a href="#" class="nav-link text-white">
@@ -50,6 +69,12 @@ class Main extends Component {
         <li><a class="dropdown-item" href="#">Sign out</a></li>
       </ul>
     </div>.
+    </div>
+    <div class="col-9">
+            <Switch>
+                <Route path="/dashboard" component={Dashboard} />
+            </Switch>
+    
   </div>
             </div>
         );
