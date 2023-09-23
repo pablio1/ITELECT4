@@ -1,0 +1,12 @@
+.main{
+    display: flex;
+}
+
+.main div{
+    flex-grow: 1;
+    background-color: #0f3b5f;
+    border: 1px solid green;
+    text-align: center;
+    /* min-height: 100vh; */
+}
+
