@@ -26,14 +26,14 @@ class Main extends Component {
                     <hr/>
                     <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <Link to="/home" onClick={() => this.handleClickSidebar('home')}>
+                        <Link to="/home" onClick={() => this.handleClickSidebar('home')}Link style={{color:'inherit',textDecoration:'inherit'}}>
                             <div class={this.state.activePage === 'home' ? "nav-link active" : "text-white nav-link" } aria-current="page">
                             Home
                             </div>
                         </Link>
                     </li>
                     <li>
-                        <Link to="/dashboard"  onClick={() => this.handleClickSidebar('dashboard')}>
+                        <Link to="/dashboard"  onClick={() => this.handleClickSidebar('dashboard')}Link style={{color:'inherit',textDecoration:'inherit'}}>
                             <div class={this.state.activePage === 'dashboard' ? "nav-link active" : "text-white nav-link" } >
                             Dashboard
                             </div>
@@ -47,7 +47,7 @@ class Main extends Component {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/products"onClick={() => this.handleClickSidebar('Products')}>
+                        <Link to="/products"onClick={() => this.handleClickSidebar('Products')}Link style={{color:'inherit',textDecoration:'inherit'}}>
                         <div class={this.state.activePage === 'Products' ? "nav-link active" : "text-white nav-link" } >
                             Products
                             </div>
