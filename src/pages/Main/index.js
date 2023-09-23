@@ -26,18 +26,18 @@ class Main extends Component {
     <hr/>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-            	<Link to="/home" onClick={() => this.handleClickSidebar('home')}>
-                    <div class={this.state.activePage === 'home' ? "nav-link active": "nav-link"} aria-current="page">
-                        Home
-                    </div>
-                </Link> 
+          <Link to="/home" onClick={() => this.handleClickSidebar('home')}>
+              <div class={this.state.activePage === 'home' ? "nav-link active": "nav-link"} aria-current="page">
+                  Home
+              </div>
+          </Link> 
       </li>
       <li>
-      <Link to="/dashboard" onClick={() => this.handleClickSidebar('dashboard')}>
-                    <div class={this.state.activePage === 'home' ? "nav-link active" : "nav-link"} aria-current="page">
-                        Dashboard
-                    </div>
-                </Link> 
+          <Link to="/dashboard" onClick={() => this.handleClickSidebar('dashboard')}>
+              <div class={this.state.activePage === 'dashboard' ? "nav-link active" : "nav-link"} aria-current="page">
+                  Dashboard
+              </div>
+          </Link> 
       </li>
       <li>
         <a href="#" class="nav-link text-white">
@@ -68,15 +68,15 @@ class Main extends Component {
         <li><hr class="dropdown-divider"/></li>
         <li><a class="dropdown-item" href="#">Sign out</a></li>
       </ul>
-    </div>.
+    </div>
     </div>
     <div class="col-9">
             <Switch>
                 <Route path="/dashboard" component={Dashboard} />
             </Switch>
     
-  </div>
-            </div>
+    </div>
+    </div>
         );
     }
 }
