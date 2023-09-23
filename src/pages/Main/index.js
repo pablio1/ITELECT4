@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Link, Route, Switch} from 'react-router-dom';
 import Dashboard from '../Dashboard';
-import Orders from '../Orders/Orders';
-import Products from '../Products/Products';
-import Customers from '../Customers/Customers';
+import Orders from '../Orders';
+import Products from '../Products';
+import Customers from '../Customers';
 
 class Main extends Component {
     state = { activePage: ''}
@@ -44,24 +44,27 @@ class Main extends Component {
                     </Link>
                     </li>
                     <li>
-                        <Link to="/orders">
-                        <div class="nav-link text-white">
+                    <Link to="/orders" onClick={() =>this.handleClickSidebar('orders')}>
+                        <div class={this.state.activePage === 'orders' ? "nav-link active" : "nav-link"} aria-current="page">
+                    
                         
                         Orders
                         </div>
                         </Link>
                     </li>
                     <li>
-                        <Link to="/products">
-                        <div class="nav-link text-white">
+                    <Link to="/products" onClick={() =>this.handleClickSidebar('products')}>
+                        <div class={this.state.activePage === 'products' ? "nav-link active" : "nav-link"} aria-current="page">
+                    
                         
                         Products
                         </div>
                         </Link>
                     </li>
                     <li>
-                    <Link to="/customers">
-                        <div class="nav-link text-white">
+                    <Link to="/customers" onClick={() =>this.handleClickSidebar('customers')}>
+                        <div class={this.state.activePage === 'customers' ? "nav-link active" : "nav-link"} aria-current="page">
+                    
                         
                         Customers
                         </div>
@@ -72,7 +75,7 @@ class Main extends Component {
                     <div class="dropdown">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"/>
-                        <strong>mdo</strong>
+                        <strong>Invokalism </strong>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                         <li><a class="dropdown-item" href="#">New project...</a></li>
@@ -86,7 +89,7 @@ class Main extends Component {
                 <div class="col-9">
                     <Switch>
                         <Route path="/dashboard" component={Dashboard} />
-                        <Route path="/orders" component={Orders} />
+                        <Route path="/orders" component={Orders}/>
                         <Route path="/products" component={Products} />
                         <Route path="/customers" component={Customers} />
                     </Switch>
