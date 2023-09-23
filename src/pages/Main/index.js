@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
+import {Link, Switch, Route} from 'react-router-dom';
+import Dashboard from '../Dashboard';
 
 class Main extends Component {
+    state = {activePage: ''}
+    componentDidMount = () => {
+        this.setState({
+            activePage: 'dashboard'
+        })
+   
+  }
+
+  handleClickSidebar = (page) => {
+    this.setState({
+          activePage: 'page'
+    })
+  }
     render() {
         return (
             <div>
@@ -11,36 +26,34 @@ class Main extends Component {
     </a>
     <hr/>
     <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item">
-        <a href="#" class="nav-link active" aria-current="page">
-          
-          Home
-        </a>
+      <li class="nav-item">        
+        <Link to="/home" onClick={() => this.handleClickSidebar('home')}>
+        <div class={this.state.activePage === 'home' ? "nav-link active" : "nav-link"} aria-current="page">
+        Home
+        </div> 
+        </Link>                    
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
-          
-          Dashboard
-        </a>
+      <Link to="/dashboard" onClick={() => this.handleClickSidebar('dashboard')}>
+        <div class={this.state.activePage === 'dashboard' ? "nav-link active" : "nav-link"}>
+        Dashboard
+        </div>       
+        </Link>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
-          
-          Orders
-        </a>
+      <Link to="/orders">
+        <div href="#" class= "nav-link text-white">
+        Orders
+        </div>        
+        </Link>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
-          
-          Products
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link text-white">
-          
-          Customers
-        </a>
-      </li>
+      <Link to="/products">
+        <div href="#" class= "nav-link text-white">
+        Products
+        </div>       
+        </Link>      
+      </li>      
     </ul>
     <hr/>
     <div class="dropdown">
@@ -57,6 +70,11 @@ class Main extends Component {
       </ul>
     </div>
   </div> 
+  <div class="col-9">
+    <Switch>
+      <Route path="/dashboard" component ={Dashboard} />
+    </Switch>
+  </div>
             </div>
         );
     }
