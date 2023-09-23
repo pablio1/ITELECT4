@@ -8,7 +8,7 @@ class App extends Component {
     render() {
         return (
             <Switch>
-                <Route path="/login" component = {Login}  />
+                <Route path="/" component = {Main}  />
                 <Route path="/register" component = {Register}  />
                 <Route path="/" component = {Main} />
             </Switch>
