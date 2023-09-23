@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import {Link, Switch, Route} from 'react-router-dom';
 import Dashboard from '../Dashboard';
+import Home from '../Home';
+import Orders from '../Orders';
+import Products from '../Products'
+
 class Main extends Component {
     state = { activePage: '' }
     componentDidMount = () => {
@@ -26,8 +30,8 @@ class Main extends Component {
                     <hr/>
                     <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <Link to="/home" onClick={() => this.handleClickSidebar('home')}Link style={{color:'inherit',textDecoration:'inherit'}}>
-                            <div class={this.state.activePage === 'home' ? "nav-link active" : "text-white nav-link" } aria-current="page">
+                        <Link to="/home" onClick={() => this.handleClickSidebar('Home')}Link style={{color:'inherit',textDecoration:'inherit'}}>
+                            <div class={this.state.activePage === 'Home' ? "nav-link active" : "text-white nav-link" } aria-current="page">
                             Home
                             </div>
                         </Link>
@@ -72,6 +76,9 @@ class Main extends Component {
                 <div class="col-9">
                     <Switch>
                         <Route path="/dashboard" component={Dashboard} />
+                        <Route path="/home" component={Home} />
+                        <Route path="/orders" component={Orders} />
+                        <Route path="/products" component={Products} />
                     </Switch>
                 </div>
             </div>
