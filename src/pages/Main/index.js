@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import {Route, Switch} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import Dashboard from '../Dashboard';
+import Home from '../Home';
+import Orders from '../Orders';
+import Products from '../Products';
+import Customer from '../Customer';
 
 export default class Main extends Component {
   state = { activePage: ''}
@@ -26,7 +30,7 @@ export default class Main extends Component {
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
       <Link to="/home" onClick={() => this.handleClickSidebar('home')} Link style={{ color: 'inherit', textDecoration: 'inherit'}}>
-        <div class={this.state.activePage === 'home' ? "nav-link active" : "text-white nav-link"} aria-current="page">
+        <div class={this.state.activePage === 'home' ? "nav-link active" : "text-white nav-link" } aria-current="page">
           Home
         </div>
       </Link>
@@ -78,6 +82,10 @@ export default class Main extends Component {
   <div class="col-9">
       <Switch>
         <Route path="/Dashboard" component = {Dashboard}/>
+        <Route path="/Home" component = {Home}/>
+        <Route path="/Orders" component = {Orders}/>
+        <Route path="/Products" component = {Products}/>
+        <Route path="/Customer" component = {Customer}/>
       </Switch>
     </div>
   </div>

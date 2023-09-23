@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Dashboard extends Component {
+class index extends Component {
     render() {
         return (
             <div>
-                Dashboard Here!
+                Customer ni diri!
             </div>
         );
     }
 }
 
-export default Dashboard;
+export default index;
