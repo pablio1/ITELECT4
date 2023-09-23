@@ -6,6 +6,19 @@ import Products from '../Products';
 import Customers from '../Customers';
 
 class Main extends Component {
+    state = { activePage: '' }
+    componentDidMount = () => {
+        this.setState({
+            activePage: 'dashboard'
+        })
+    }
+
+    handleClickSidebar = (page) => {
+        this.setState({
+            activePage: page
+        })
+    }
+
     render() {
         return (
             <div class = "row">
@@ -16,37 +29,37 @@ class Main extends Component {
                     <hr/>
                     <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                    <Link to = "/home">
-                        <div href="#" class="nav-link active" aria-current="page">
-                        Home
+                    <Link to="/home" onClick={() => this.handleClickSidebar('home')} style={{textDecoration: 'none'}} >
+                    <div class={this.state.activePage === 'home' ? "nav-link active" : "nav-link"} aria-current="page">
+                        <b>Home</b>
                         </div>
                      </Link>
                     </li>
                     <li>
-                    <Link to = "/dashboard">
-                        <div href="#" class="nav-link text-white">
-                        Dashboard 
+                    <Link to ="/dashboard"  onClick={() => this.handleClickSidebar('dashboard')} style={{textDecoration: 'none'}}>
+                    <div class={this.state.activePage === 'dashboard' ? "nav-link active" : "nav-link"} aria-current="page">
+                        <b>Dashboard </b>
                         </div>
                     </Link>
                     </li>
                     <li>
-                    <Link to = "/orders">
-                        <div href="#" class="nav-link text-white">
-                        Orders
+                    <Link to="/orders"  onClick={() => this.handleClickSidebar('orders')} style={{textDecoration: 'none'}}>
+                    <div class={this.state.activePage === 'orders' ? "nav-link active" : "nav-link"} aria-current="page">
+                        <b>Orders</b>
                         </div>
                     </Link>
                     </li>
                     <li>
-                    <Link to = "/products">
-                        <div href="#" class="nav-link text-white">
-                        Products
+                    <Link to="/products"  onClick={() => this.handleClickSidebar('products')} style={{textDecoration: 'none'}}>
+                    <div class={this.state.activePage === 'products' ? "nav-link active" : "nav-link"} aria-current="page">
+                        <b>Products</b>
                         </div>
                     </Link>
                     </li>
                     <li>
-                    <Link to = "/customers">
-                        <div href="#" class="nav-link text-white">
-                        Customers
+                    <Link to="/customers"  onClick={() => this.handleClickSidebar('customers')} style={{textDecoration: 'none'}}>
+                    <div class={this.state.activePage === 'customers' ? "nav-link active" : "nav-link"} aria-current="page">
+                        <b>Customers</b>
                         </div>
                     </Link>
                     </li>
@@ -68,10 +81,10 @@ class Main extends Component {
                 </div>
                 <div class = "col-9">
                     <Switch>
-                      <Route path = "/dashboard" Component = {Dashboard}/>
-                      <Route path = "/orders" Component = {Orders}/>
-                      <Route path = "/products" Component = {Products}/>
-                      <Route path = "/customers" Component = {Customers}/>
+                      <Route path = "/dashboard" component = {Dashboard}/>
+                      <Route path = "/orders" component = {Orders}/>
+                      <Route path = "/products" component = {Products}/>
+                      <Route path = "/customers" component = {Customers}/>
 
 
                     </Switch>
