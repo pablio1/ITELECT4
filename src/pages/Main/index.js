@@ -25,36 +25,36 @@ export default class Main extends Component {
     <hr/>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-      <Link to="/home" onClick={() => this.handleClickSidebar('home')}>
-        <div class={this.state.activePage === 'home' ? "nav-link active" : "nav-link"} aria-current="page">
+      <Link to="/home" onClick={() => this.handleClickSidebar('home')} Link style={{ color: 'inherit', textDecoration: 'inherit'}}>
+        <div class={this.state.activePage === 'home' ? "nav-link active" : "text-white nav-link"} aria-current="page">
           Home
         </div>
       </Link>
       </li>
       <li>
-      <Link to="/dashboard" onClick={() => this.handleClickSidebar('dashboard')}>
-        <div class={this.state.activePage === 'dashboard' ? "nav-link active" : "nav-link"}>
+      <Link to="/dashboard" onClick={() => this.handleClickSidebar('dashboard')} Link style={{ color: 'inherit', textDecoration: 'inherit'}}>
+        <div class={this.state.activePage === 'dashboard' ? "text-white nav-link active" : "nav-link"}>
           Dashboard
         </div>
       </Link>
       </li>
       <li>
-      <Link to="/orders" onClick={() => this.handleClickSidebar('orders')}>
-        <div class={this.state.activePage === 'orders' ? "nav-link active" : "nav-link"}>
+      <Link to="/orders" onClick={() => this.handleClickSidebar('orders')} Link style={{ color: 'inherit', textDecoration: 'inherit'}}>
+        <div class={this.state.activePage === 'orders' ? "text-white nav-link active" : "nav-link"}>
           Orders
         </div>
       </Link>
       </li>
       <li>
-      <Link to="/products" onClick={() => this.handleClickSidebar('products')}>
-        <div class={this.state.activePage === 'products' ? "nav-link active" : "nav-link"}>
+      <Link to="/products" onClick={() => this.handleClickSidebar('products')} Link style={{ color: 'inherit', textDecoration: 'inherit'}}>
+        <div class={this.state.activePage === 'products' ? "text-white nav-link active" : "nav-link"}>
           Products
         </div>
       </Link>
       </li>
       <li>
-      <Link to="/customer" onClick={() => this.handleClickSidebar('customer')}>
-        <div class={this.state.activePage === 'customer' ? "nav-link active" : "nav-link"}>
+      <Link to="/customer" onClick={() => this.handleClickSidebar('customer')} Link style={{ color: 'inherit', textDecoration: 'inherit'}}>
+        <div class={this.state.activePage === 'customer' ? "text-white nav-link active" : "text white nav-link"}>
           Customer
         </div>
       </Link>
