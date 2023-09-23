@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Main from './pages/Main/Main';
+import Main from './pages/Main';
 
 class App extends Component {
     render() {
@@ -15,6 +15,5 @@ class App extends Component {
         );
     }
 }
-
 
 export default App;
