@@ -3,9 +3,11 @@ import React, { Component } from 'react';
 class Dashboard extends Component {
     render() {
         return (
+            
             <div>
-                Welcome User!
+              <h1>DASHHHHH BOAAARDDD</h1>
             </div>
+           
         );
     }
 }
