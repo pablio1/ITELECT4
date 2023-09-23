@@ -3,51 +3,53 @@ import { Route, Switch } from 'react-router-dom';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 
-class Main extends Component {
+export class Main extends Component {
     render() {
         return (
-            
-      <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style={{width:'180px', height:'100vh'}}>
+           <div class ="row"> 
+            <div class="col-9 text-white bg-dark" style={{height:'100vh'}}>
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
       <span class="fs-4">Sidebar</span>
     </a>
     <hr/>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <Link to="dashboard">
-
-        <div class="nav-link active" aria-current="page">
+        <Link to="/home" onClick={() => this.handleClickSidebar('home')}>
+        <div class={this.state.activePage === 'home' ?"nav-link active" : "nav-link"} aria-current="page">
           Home
         </div>
         </Link>
       </li>
       
       <li>
-        <Link to="dashboard">
-
-         <div class="nav-link text-white">
+      <Link to="/dashboard" onClick={() => this.handleClickSidebar('dashboard')}>
+        <div class={this.state.activePage === 'dashboard' ?"nav-link active" : "nav-link"}>
           Dashboard
         </div>
         </Link>
 
       </li>
       <li>
-        <Link to="">
-        <div class="nav-link text-white">
+      <Link to="/oders" onClick={() => this.handleClickSidebar('orders')}>
+        <div class={this.state.activePage === 'orders' ? "nav-link active" : "nav-link"}>
           Orders
         </div>
         </Link>
 
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+      <Link to="/products" onClick={() => this.handleClickSidebar('products')}>
+        <div class={this.state.activePage === 'products' ?"nav-link active" : "nav-link"}>
           Products
-        </a>
+        </div>
+        </Link>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+      <Link to="/customers" onClick={() => this.handleClickSidebar('customers')}>
+        <div class={this.state.activePage === 'products' ?"nav-link active" : "nav-link"}>
           Customers
-        </a>
+        </div>
+        </Link>
       </li>
     </ul>
     <hr/>
@@ -67,9 +69,21 @@ class Main extends Component {
     </div>
   </div>
 
-       
+    <div class ="col-9">
+        <Switch>
+        <Route path="/dashboard" component = {Main}  />
+
+        </Switch>
+
+    </div>
+    </div>
+   
+    
+  
         );
         
     }
 }
+
+
 export default Main;
