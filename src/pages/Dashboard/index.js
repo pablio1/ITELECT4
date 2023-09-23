@@ -4,7 +4,10 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
-                Welcome User!
+                
+               
+                <img src="https://comicartcommunity.com/wp-content/uploads/2016/08/02-Zero-Fear.jpg" width="485"/>
+                <img src="https://comicartcommunity.com/wp-content/uploads/2016/08/02-Zero-Fear.jpg " width="485"/>
             </div>
         );
     }
