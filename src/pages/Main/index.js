@@ -1,38 +1,51 @@
 import React, { Component } from 'react';
+import {Route, Switcht} from 'react-router-dom';
+import {Link} from 'react-router-dom/cjs/react-router-dom.min';
+import Dashbaord from '../Dashboard';
 
 export default class Main extends Component {
     render() {
         return (
-            <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style={{width : '280px', height : '180vh'}}>
+            <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style={{width : '250px', height : '100vh'}}>
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
       <span class="fs-4">Sidebar</span>
     </a>
     <hr/>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="#" class="nav-link active" aria-current="page">
+      <Link to="/home">
+        <div class="nav-link active" aria-current="page">
           Home
-        </a>
+        </div>
+      </Link>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+      <Link to="/dashboard">
+        <div class="nav-link text-white">
           Dashboard
-        </a>
+        </div>
+      </Link>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+      <Link to="/orders">
+        <div class="nav-link text-white">
           Orders
-        </a>
+        </div>
+      </Link>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+      <Link to="/products">
+        <div class="nav-link text-white">
           Products
-        </a>
+        </div>
+      </Link>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
-          Customers
-        </a>
+      <Link to="/customer">
+        <div class="nav-link text-white">
+          Customer
+        </div>
+      </Link>
       </li>
     </ul>
     <hr/>
