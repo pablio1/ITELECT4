@@ -77,7 +77,7 @@ export default class Main extends Component {
   </div>
   <div class="col-9">
       <Switch>
-        <Route path="/Dashboard" component = {Dashboard}> </Route>
+        <Route path="/Dashboard" component = {Dashboard}/>
       </Switch>
     </div>
   </div>
