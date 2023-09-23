@@ -9,6 +9,18 @@ import Home from '../Home'
 
 
 class Main extends Component {
+    state = { activePage: ''}
+    componentDidMount = () => {
+      this.setState({
+        activePage: ''
+      })
+    }
+
+    handleClickSidebar = (page) => {
+      this.setState({
+        activePage: page
+      })
+    }
     
     render() {
         return (
@@ -20,36 +32,36 @@ class Main extends Component {
     <hr/>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <Link to="/home">
-        <div class="nav-link text white">
+        <Link Link style={{textDecoration: 'none'}} to="/home" onClick={() => this.handleClickSidebar('home')}>
+        <div class={this.state.activePage === 'home' ? "nav-link active" : "text-white nav-link"} aria-current="page">
           Home
         </div>
         </Link>
       </li>
       <li>
-      <Link to="/dashboard">
-        <div class="nav-link text white">
+      <Link Link style={{textDecoration: 'none'}} to="/dashboard" onClick={() => this.handleClickSidebar('dashboard')}>
+        <div class={this.state.activePage === 'dashboard' ? "nav-link active" : "text-white nav-link"} aria-current="page">
           Dashboard
         </div>
         </Link>
       </li>
       <li>
-      <Link to="/orders">
-        <div class="nav-link text white">
+      <Link Link style={{textDecoration: 'none'}} to="/orders" onClick={() => this.handleClickSidebar('orders')}>
+        <div class={this.state.activePage === 'orders' ? "nav-link active" : "text-white nav-link"} aria-current="page">
           Orders
         </div>
         </Link>
       </li>
       <li>
-      <Link to="/products">
-        <div class="nav-link text white">
+      <Link Link style={{textDecoration: 'none'}} to="/products" onClick={() => this.handleClickSidebar('products')}>
+        <div class={this.state.activePage === 'products' ? "nav-link active" : "text-white nav-link"} aria-current="page">
           Products
         </div>
         </Link>
       </li>
       <li>
-      <Link to="/customers">
-        <div class="nav-link text white">
+      <Link Link style={{textDecoration: 'none'}} to="/customers" onClick={() => this.handleClickSidebar('customers')}>
+        <div class={this.state.activePage === 'customers' ? "nav-link active" : "text-white nav-link"} aria-current="page">
           Customers
         </div>
         </Link>
