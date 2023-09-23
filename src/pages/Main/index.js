@@ -33,28 +33,28 @@ export default class Main extends Component {
       </li>
       <li>
       <Link to="/dashboard" onClick={() => this.handleClickSidebar('dashboard')} Link style={{ color: 'inherit', textDecoration: 'inherit'}}>
-        <div class={this.state.activePage === 'dashboard' ? "text-white nav-link active" : "nav-link"}>
+        <div class={this.state.activePage === 'dashboard' ? "nav-link active" : "text-white nav-link"}>
           Dashboard
         </div>
       </Link>
       </li>
       <li>
       <Link to="/orders" onClick={() => this.handleClickSidebar('orders')} Link style={{ color: 'inherit', textDecoration: 'inherit'}}>
-        <div class={this.state.activePage === 'orders' ? "text-white nav-link active" : "nav-link"}>
+        <div class={this.state.activePage === 'orders' ? "nav-link active" : "text-white nav-link"}>
           Orders
         </div>
       </Link>
       </li>
       <li>
       <Link to="/products" onClick={() => this.handleClickSidebar('products')} Link style={{ color: 'inherit', textDecoration: 'inherit'}}>
-        <div class={this.state.activePage === 'products' ? "text-white nav-link active" : "nav-link"}>
+        <div class={this.state.activePage === 'products' ? "nav-link active" : "text-white nav-link"}>
           Products
         </div>
       </Link>
       </li>
       <li>
       <Link to="/customer" onClick={() => this.handleClickSidebar('customer')} Link style={{ color: 'inherit', textDecoration: 'inherit'}}>
-        <div class={this.state.activePage === 'customer' ? "text-white nav-link active" : "text white nav-link"}>
+        <div class={this.state.activePage === 'customer' ? "nav-link active" : "text-white nav-link"}>
           Customer
         </div>
       </Link>
