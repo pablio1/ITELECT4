@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Link, Switch, Route} from 'react-router-dom';
 import Dashboard from '../Dashboard';
+import Orders from '../Orders';
+import Products from '../Products';
 class Main extends Component {
     state = { activePage: '' }
     componentDidMount = () => {
@@ -72,6 +74,8 @@ class Main extends Component {
                 <div class="col-9">
                     <Switch>
                         <Route path="/dashboard" component={Dashboard} />
+                        <Route path="/orders" component={Orders} />
+                        <Route path="/products" component={Products} />
                     </Switch>
                 </div>
             </div>
