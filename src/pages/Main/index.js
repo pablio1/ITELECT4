@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import {Link, Switch, Route} from 'react-router-dom';
 import Dashboard from '../Dashboard';
-
+import Movies from '../Movies';
+import Home from '../Home';
 class Main extends Component {
     state = {activePage: ''}
     componentDidMount = () => {
         this.setState({
-            activePage: 'dashboard'
+            activePage: 'home'
         })
    
   }
@@ -48,9 +49,9 @@ class Main extends Component {
         </Link>
       </li>
       <li>
-      <Link to="/products">
-        <div href="#" class= "nav-link text-white">
-        Products
+      <Link to="/movies" onClick={() => this.handleClickSidebar('movies')}>
+        <div class={this.state.activePage === 'movies' ? "nav-link active" : "nav-link"}>
+        Movies
         </div>       
         </Link>      
       </li>      
@@ -73,6 +74,8 @@ class Main extends Component {
   <div class="col-9">
     <Switch>
       <Route path="/dashboard" component ={Dashboard} />
+      <Route path="/movies" component ={Movies} />
+      <Route path="/home" component ={Home} />
     </Switch>
   </div>
             </div>
