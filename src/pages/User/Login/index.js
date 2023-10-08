@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Test extends Component {
+class Login extends Component {
     render() {
         return (
             <div style={{paddingTop:'50px'}}>
@@ -35,4 +35,4 @@ class Test extends Component {
     }
 }
 
-export default Test;
+export default Login;
