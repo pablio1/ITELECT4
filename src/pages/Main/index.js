@@ -4,6 +4,7 @@ import Dashboard from '../Dashboard';
 import Orders from '../Orders';
 import Products from '../Products';
 import Login from '../Login';
+import Home from '../Home';
 
 class Main extends Component {
     state = { activePage: ''}
@@ -29,29 +30,29 @@ class Main extends Component {
             <hr/>
             <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-                <Link style ={{}} to = "/main" onClick = {() => this.handleClickSidebar} >
-                <div class="nav-link active" aria-current="page">
+               <Link to="/home" onClick={() => this.handleClickSidebar('home')}>
+                <div class={this.state.activePage === 'home' ? "nav-link active" : "nav-link"} aria-current="page">
                 Home
                 </div>
                 </Link>
             </li>
             <li>
-                <Link to = "/dashboard">
-                <div  class="nav-link text-white">
+               <Link to="/dashboard"  onClick={() => this.handleClickSidebar('dashboard')}>
+               <div class={this.state.activePage === 'dashboard' ? "nav-link active" : "nav-link"} >
                 Dashboard
                 </div>
                 </Link>
             </li>
             <li>
-                <Link to = "/orders">
-                <div  class="nav-link text-white"> 
+                <Link to="/orders"  onClick={() => this.handleClickSidebar('orders')}>
+                <div class={this.state.activePage === 'orders' ? "nav-link active" : "nav-link"} > 
                 Orders
                 </div>
                 </Link>
             </li>
             <li>
-                <Link to = "/products">
-                <div  class="nav-link text-white"> 
+                <Link to="/products"  onClick={() => this.handleClickSidebar('products')}>
+                <div class={this.state.activePage === 'products' ? "nav-link active" : "nav-link"} > 
                 Products
                 </div>
                 </Link>
@@ -79,6 +80,7 @@ class Main extends Component {
                     <Route path="/dashboard" component = {Dashboard} />
                     <Route path="/orders" component = {Orders} />
                     <Route path="/products" component = {Products} />
+                    <Route path="/home" component = {Home} />
                     <Route path="/login" component = {Login} />
                 </Switch>
             </div>
