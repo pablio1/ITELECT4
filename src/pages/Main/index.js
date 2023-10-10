@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Dashboard from '../Dashboard';
+import LightNovel from '../LightNovel';
 
 
 export default class Main extends Component {
@@ -21,7 +22,7 @@ handleClickSidebar = (pages) => {
   render() {
     return (
       <div class="row">
-         <div class="col-3 text-white bg-dark" style={{ height:'100vh'}}>
+         <div class="col-3 text-white bg-dark" style={{ height:'100vh', width:'210px'}}>
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
      
       <span class="fs-4">Sidebar</span>
@@ -43,9 +44,9 @@ handleClickSidebar = (pages) => {
         </Link>
       </li>
       <li>
-        <Link to="/orders"  onClick={() => this.handleClickSidebar('orders')} Link style={{textDecoration: 'none'}}>
-            <div class={this.state.activePage === 'orders' ? "nav-link active" : "text-white nav-link"}>
-            Orders
+        <Link to="/lightnovel"  onClick={() => this.handleClickSidebar('lightnovel')} Link style={{textDecoration: 'none'}}>
+            <div class={this.state.activePage === 'lightnovel' ? "nav-link active" : "text-white nav-link"}>
+            Light Novels
             </div>
         </Link>
       </li>
@@ -82,6 +83,8 @@ handleClickSidebar = (pages) => {
   <div class="col-9">
     <Switch>
         <Route path="/dashboard" component = {Dashboard}/>
+        <Route path="/lightnovel" component = {LightNovel}/>
+        {/* <Route path="/dashboard" component = {Dashboard}/> */}
     </Switch>
   </div>
       </div>
