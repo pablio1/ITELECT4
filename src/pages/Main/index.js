@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link, Switch, Route} from 'react-router-dom';
-import Dashboard from '../Home';
+import Home from '../Home';
+import Search from '../Search';
 
 class Main extends Component {
     state = { activePage: '' }
@@ -34,7 +35,7 @@ class Main extends Component {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/dashboard"  onClick={() => this.handleClickSidebar('dashboard')}>
+                        <Link to="/search"  onClick={() => this.handleClickSidebar('dashboard')}>
                             <div class={this.state.activePage === 'dashboard' ? "nav-link active" : "nav-link"} >
                             Search
                             </div>
@@ -64,8 +65,9 @@ class Main extends Component {
                     </div>
                 </div>
                 <div class="col-9">
-                    <Switch>
-                        <Route path="/dashboard" component={Dashboard} />
+                    <Switch>     
+                        <Route path="/home" component={Home} />
+                        <Route path="/search" component={Search} />                   
                     </Switch>
                 </div>
             </div>
