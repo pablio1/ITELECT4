@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Link, Switch, Route} from 'react-router-dom';
 import Dashboard from '../Dashboard';
+import Home from '../Home';
+
 class Main extends Component {
     state = { activePage: '' }
     componentDidMount = () => {
@@ -56,7 +58,7 @@ class Main extends Component {
                     </ul>
                     <hr/>
                     <div class="dropdown">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"/>
                         <strong>mdo</strong>
                     </a>
