@@ -3,7 +3,6 @@ import ReactDOM  from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import "jquery";
-import "popper.js/dist/umd/popper";
 import "bootstrap/dist/js/bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 
