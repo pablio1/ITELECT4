@@ -4,12 +4,13 @@ import Dashboard from '../Dashboard';
 import Orders from '../Orders';
 import Products from '../Products';
 import Customers from '../Customers';
+import Home from '../Home';
 
 class Main extends Component {
     state = { activePage: ''}
     componentDidMount = () => {
         this.setState({
-            activePage: 'dashboard'
+            activePage: 'Home'
         })
     }
 
@@ -24,7 +25,7 @@ class Main extends Component {
             <div class="row">
                 <div class="col-3 text-white bg-dark" style= {{height: '100vh'}}>
                     <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-4">Sidebar</span>
+                    <span class="fs-4">Free Movies</span>
                     </div>
                     <hr/>
                     <ul class="nav nav-pills flex-column mb-auto">
@@ -88,6 +89,7 @@ class Main extends Component {
                 </div>
                 <div class="col-9">
                     <Switch>
+                        <Route path="/home" component = {Home} />
                         <Route path="/dashboard" component={Dashboard} />
                         <Route path="/orders" component={Orders}/>
                         <Route path="/products" component={Products} />
