@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class Home extends Component {
     render() {
         return (
-            <div>
+            <div >
             <div style={{marginLeft:"20px", marginTop:"20px"}}>
         
         </div>
@@ -22,8 +22,8 @@ class Home extends Component {
                         <div class="container">
                             <div class="carousel-caption">
                                 <h1>Movie Title</h1>
-                                <p>Movie description</p>
-                                <p><div class="btn btn-lg btn-primary"><Link to="/">Watch Trailer</Link></div></p>
+                                <p>Movie description: From this perspective, a movie synopsis is a short write-up that summarizes what a screenplay is all about. It includes a snapshot of what the overall plot structure and story for the film will be. A movie synopsis (or film synopsis) is usually around one page long.</p>
+                                <p><div class="btn btn-lg btn-primary" color='black'><Link to="/" style={{ color: 'white' }}>Watch Trailer</Link></div></p>
                             </div>
                         </div>
                         <h1>
@@ -37,8 +37,8 @@ class Home extends Component {
                         <div class="container">
                             <div class="carousel-caption">
                                 <h1>Movie Title</h1>
-                                <p>Movie description</p>
-                                <p><div class="btn btn-lg btn-primary"><Link to="/">Watch Trailer</Link></div></p>
+                                <p>Movie description: From this perspective, a movie synopsis is a short write-up that summarizes what a screenplay is all about. It includes a snapshot of what the overall plot structure and story for the film will be. A movie synopsis (or film synopsis) is usually around one page long.</p>
+                                <p><div class="btn btn-lg btn-primary" color='black'><Link to="/" style={{ color: 'white' }}>Watch Trailer</Link></div></p>
                             </div>
                         </div>
                         <h1>
@@ -52,8 +52,8 @@ class Home extends Component {
                         <div class="container">
                             <div class="carousel-caption">
                                 <h1>Movie Title</h1>
-                                <p>Movie description</p>
-                                <p><div class="btn btn-lg btn-primary"><Link to="/">Watch Trailer</Link></div></p>
+                                <p>Movie description: From this perspective, a movie synopsis is a short write-up that summarizes what a screenplay is all about. It includes a snapshot of what the overall plot structure and story for the film will be. A movie synopsis (or film synopsis) is usually around one page long.</p>
+                                <p><div class="btn btn-lg btn-primary" color='black'><Link to="/" style={{ color: 'white' }}>Watch Trailer</Link></div></p>
                             </div>
                         </div>
                         <h1>
@@ -65,16 +65,17 @@ class Home extends Component {
                 </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
+                        <span class="visually-hidden" color='black'>Previous</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
+                        <span class="visually-hidden" color='black'>Next</span>
                     </button>
             </div>
         </div>
 
-        <h1>Popular Movies</h1>
+        <h9>&nbsp; </h9>
+        <h3>&nbsp; Popular Movies</h3>
         <div class="album py-5 bg-body-tertiary">
             <div class="container">
 

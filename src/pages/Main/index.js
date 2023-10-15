@@ -10,13 +10,15 @@ import './custom.styl';
 class Main extends Component {
     render() {
         return (
-            <div>
+            <div >
                 <div class="p-3 text-bg-dark">
                     <div class="container">
                         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                             <div class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
                             <Link to="/"></Link>
                             </div>
+
+                            <h1 class="trajan-pro" style={{color: 'red'}}>CineHub &nbsp;&nbsp;</h1>
                     
                             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                                 <li><Link to="/home" className="nav-link px-2 link-secondary">Home</Link></li>
@@ -32,8 +34,8 @@ class Main extends Component {
                             </form>
                     
                             <div class="text-end">
-                            <button type="button" class="btn btn-outline-light me-2">Login</button>
-                            <button type="button" class="btn btn-warning">Sign-up</button>
+                            <button type="button" class="btn btn-outline-light me-2" style={{ background: 'red', border: 'white', color: 'white'}}>Sign-up</button>
+                            <button type="button" class="btn btn-warning" style={{ background: 'black', border: 'white', color: 'white'}}>Login</button>
                             </div>
                         </div>
                         </div>
