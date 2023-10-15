@@ -1,0 +1,36 @@
+/* style.css */
+.search-container {
+  display: flex; /* Use flexbox to arrange items horizontally */
+  justify-content: flex-start; /* Adjust to align to the left */
+  align-items: center; /* Center the content vertically */
+  height: 40px; /* Adjust the height as needed */
+  background: transparent; /* Set the background to transparent */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow for depth */
+  margin: 10px; /* Add spacing around the search bar */
+}
+
+.search-input {
+  padding: 10px;
+  font-size: 16px; /* Adjust the font size for a medium size */
+  width: auto; /* Set auto width to fill the available space */
+  background: transparent; /* Set the background to transparent */
+  border: none; /* Remove the input border */
+  outline: none; /* Remove the input outline on focus */
+  color: #007bff; /* Text color */
+  flex: 1; /* Allow the input to grow and take available space */
+}
+
+.search-button {
+  padding: 10px 40px;
+  font-size: 16px; /* Adjust the font size for a medium size */
+  background-color: transparent; /* Set the button background to transparent */
+  color: #007bff; /* Text color */
+  border: 2px solid #007bff; /* Add a 2px border with the same color as the search container */
+  border-radius: 25px; /* Add rounded corners to the button */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* Add a smooth transition effect */
+}
+.search-button:hover {
+  background-color: #007bff;
+  color: #fff;
+}
