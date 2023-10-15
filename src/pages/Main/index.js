@@ -3,6 +3,9 @@ import { Link, Switch, Route } from 'react-router-dom';
 import Dashboard from '../Dashboard';
 import Home from '../Home';
 
+// Import your CSS file
+import './styles.css';
+
 class Main extends Component {
     state = { activePage: '' }
 
@@ -18,6 +21,11 @@ class Main extends Component {
         })
     }
 
+    handleSearch = () => {
+        // Handle the movie search here using the YouTube API
+        // You can make an API request to search for movies based on user input
+    }
+
     render() {
         const navLinkStyle = {
             color: 'white',
@@ -30,7 +38,10 @@ class Main extends Component {
             backgroundSize: 'cover',
             minHeight: '100vh',
             backgroundRepeat: 'no-repeat',
+<<<<<<< HEAD
             
+=======
+>>>>>>> c409a73749020a90957e2732d1dd18f2e48a8c72
         };
 
         return (
@@ -50,6 +61,15 @@ class Main extends Component {
                     </div>
                 </nav>
 
+<<<<<<< HEAD
+=======
+                {/* Movie Search Bar */}
+                <div className="search-bar">
+                    <input type="text" placeholder="Search for movies..." />
+                    <button onClick={this.handleSearch}>Search</button>
+                </div>
+
+>>>>>>> c409a73749020a90957e2732d1dd18f2e48a8c72
                 <Switch>
                     <Route path="/dashboard" component={Dashboard} />
                     <Route path="/home" component={Home} />
