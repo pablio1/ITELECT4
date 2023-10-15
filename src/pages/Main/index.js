@@ -38,10 +38,6 @@ class Main extends Component {
             backgroundSize: 'cover',
             minHeight: '100vh',
             backgroundRepeat: 'no-repeat',
-<<<<<<< HEAD
-            
-=======
->>>>>>> c409a73749020a90957e2732d1dd18f2e48a8c72
         };
 
         return (
@@ -61,15 +57,12 @@ class Main extends Component {
                     </div>
                 </nav>
 
-<<<<<<< HEAD
-=======
                 {/* Movie Search Bar */}
                 <div className="search-bar">
                     <input type="text" placeholder="Search for movies..." />
                     <button onClick={this.handleSearch}>Search</button>
                 </div>
 
->>>>>>> c409a73749020a90957e2732d1dd18f2e48a8c72
                 <Switch>
                     <Route path="/dashboard" component={Dashboard} />
                     <Route path="/home" component={Home} />
