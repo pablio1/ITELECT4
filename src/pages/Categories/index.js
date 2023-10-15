@@ -1,25 +1,11 @@
 import React, { Component } from 'react';
 
-
-class Home extends Component {
+class Categories extends Component {
     render() {
         return (
             <div>
-               <div style={{marginLeft:'20px', marginTop:'20px'}}>
-                    <h1>Movies</h1>
-                </div>
-                <div class="py-5 text-center container">
-                  <div class="row py-lg-5">
-                    <div class="col-lg-6 col-md-8 mx-auto">
-                      <h1 class="fw-light" _msttexthash="205153" _msthash="9" >Album example</h1>
-                      <p class="lead text-muted" _msttexthash="12736789" _msthash="10" >A short description about the album below (its contents, origin, etc.). Keep it short and cute, but not too short so people don't skip this album completely.</p>
-                      <p>
-                        <a href="#" class="btn btn-primary my-2" _msttexthash="318903" _msthash="11" >Main call to action</a>
-                        <a href="#" class="btn btn-secondary my-2" _msttexthash="238524" _msthash="12" >Secondary work</a>
-                      </p>
-                    </div>
-                  </div>
-                  
+                <div style={{marginLeft:'20px', marginTop:'20px'}}>
+                    <h1>Categories</h1>
                 </div>
 
                 <div class="album py-5 bg-light">
@@ -176,9 +162,8 @@ class Home extends Component {
                     </div>
                 </div>
             </div>
-            
         );
     }
 }
 
-export default Home;
+export default Categories;

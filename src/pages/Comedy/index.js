@@ -1,25 +1,11 @@
 import React, { Component } from 'react';
 
-
-class Home extends Component {
+class Comedy extends Component {
     render() {
         return (
             <div>
-               <div style={{marginLeft:'20px', marginTop:'20px'}}>
-                    <h1>Movies</h1>
-                </div>
-                <div class="py-5 text-center container">
-                  <div class="row py-lg-5">
-                    <div class="col-lg-6 col-md-8 mx-auto">
-                      <h1 class="fw-light" _msttexthash="205153" _msthash="9" >Album example</h1>
-                      <p class="lead text-muted" _msttexthash="12736789" _msthash="10" >A short description about the album below (its contents, origin, etc.). Keep it short and cute, but not too short so people don't skip this album completely.</p>
-                      <p>
-                        <a href="#" class="btn btn-primary my-2" _msttexthash="318903" _msthash="11" >Main call to action</a>
-                        <a href="#" class="btn btn-secondary my-2" _msttexthash="238524" _msthash="12" >Secondary work</a>
-                      </p>
-                    </div>
-                  </div>
-                  
+                <div style={{marginLeft:'20px', marginTop:'20px'}}>
+                    <h1>Comedy</h1>
                 </div>
 
                 <div class="album py-5 bg-light">
@@ -60,7 +46,7 @@ class Home extends Component {
                             </div>
                             <div class="col">
                             <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" _mstaria-label="4468347" _mstHash="27" style={{textAlign: 'left'}}><title _mstTextHash="177515" _mstHash="28">Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em" _mstTextHash="134056" _mstHash="29">Thumbnail</text></svg>
+                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" _mstaria-label="4468347" _mstHash="27" style={{ textAlign: 'left'}}><title _mstTextHash="177515" _mstHash="28">Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em" _mstTextHash="134056" _mstHash="29">Thumbnail</text></svg>
 
                                 <div class="card-body">
                                 <p class="card-text" _msttexthash="9321065" _msthash="30" style={{ textAlign: 'left'}}>This is a broader card with supporting text below as a natural introduction to additional content. This content is a little longer.</p>
@@ -176,9 +162,8 @@ class Home extends Component {
                     </div>
                 </div>
             </div>
-            
         );
     }
 }
 
-export default Home;
+export default Comedy;
