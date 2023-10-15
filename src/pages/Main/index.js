@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import {Link, Switch, Route} from 'react-router-dom'
 import Dashboard from '../Dashboard'
+import Home from '../Home'
+
+const backgroundImageStyle = {
+  background: 'url(https://img.redbull.com/images/w_1200/q_auto,f_auto/redbullcom/2014/10/09/1331683687434_2/dota-2-is-unlike-most-games-of-its-kind) no-repeat center center fixed',
+  backgroundSize: 'cover',
+};
 export default class Main extends Component {
   state = { activePage: '' }
   componentDidMount = () => {
@@ -15,7 +21,7 @@ export default class Main extends Component {
   }
   render() {
     return (
-      <div class="row">
+      <div class="row" style={backgroundImageStyle}>
       <div class="col-3 flex-shrink-0 p-3 text-white bg-dark" style={{width: '280px', height: '100vh'}}>
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <span class="fs-4" style={{marginLeft: '40px'}}>Dota Movie</span>
@@ -74,7 +80,7 @@ export default class Main extends Component {
         <hr/>
         <div class="dropdown">
           <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2" style={{marginLeft: '15px'}}/>
+            <img src="https://avatars.githubusercontent.com/u/113760187?s=400&u=c7ea063463c19e7fcf20536d1478941afc2c04e1&v=4" alt="" width="32" height="32" class="rounded-circle me-2" style={{marginLeft: '15px'}}/>
             <strong>Neil</strong>
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
@@ -89,6 +95,7 @@ export default class Main extends Component {
       <div class="col-9">
           <Switch>
               <Route path="/dashboard" component={Dashboard} />
+              <Route path="/home" component={Home} />
           </Switch>
         </div>
       </div>
