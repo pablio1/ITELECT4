@@ -1,0 +1,14 @@
+/* Define the CSS classes as follows */
+.light-blue-background {
+    background-color: lightblue;
+}
+
+.light-brown-background {
+    background-color: lightbrown;
+    /* Add any other styles you want for the light brown area */
+}
+
+.custom-button {
+    background-color: red;
+    /* Add any other styles you want for the red button */
+}
