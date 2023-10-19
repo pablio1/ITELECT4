@@ -36,3 +36,23 @@
   background-color: black;
   color: #fff;
 }
+
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.image-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px; /* Add spacing between rows */
+}
+
+.grid-image {
+  width: 200px; /* Set a fixed width for the images */
+  height: 200px; /* Set a fixed height for the images */
+  margin: 10px; /* Add spacing around the images */
+}
