@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Link, Switch, Route} from 'react-router-dom'
 import Dashboard from '../Dashboard'
 import Home from '../Home'
-
+import './style.css'; // Import the CSS file
 const backgroundImageStyle = {
   background: 'url(https://img.redbull.com/images/w_1200/q_auto,f_auto/redbullcom/2014/10/09/1331683687434_2/dota-2-is-unlike-most-games-of-its-kind) no-repeat center center fixed',
   backgroundSize: 'cover',
