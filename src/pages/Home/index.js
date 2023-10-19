@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import './style.css'; // Import the CSS file
 
 // Import your images using relative paths
-import image1 from '../../piucturesmovie/movie.png';
-import image2 from '../../piucturesmovie/movie2.png';
-import image3 from '../../piucturesmovie/movie3.png';
-import image4 from '../../piucturesmovie/movie4.png';
-import image5 from '../../piucturesmovie/movie5.png';
-import image6 from '../../piucturesmovie/movie6.png';
+import image1 from '../../picturesmovie/movie.png';
+import image2 from '../../picturesmovie/movie2.png';
+import image3 from '../../picturesmovie/movie3.png';
+import image4 from '../../picturesmovie/movie4.png';
+import image5 from '../../picturesmovie/movie5.png';
+import image6 from '../../picturesmovie/movie6.png';
 
 class Home extends Component {
     state = {
