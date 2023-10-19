@@ -11,7 +11,7 @@ export default class Main extends Component {
   state = { activePage: '' }
   componentDidMount = () => {
     this.setState({
-      activePage: 'home'
+      activePage: ''
     })
   }
   handleClickSidebar = (pages) => {
