@@ -30,7 +30,7 @@ class Dashboard extends Component {
             this.state.results.map((data, index) => {
                 console.log(data);
                 return (
-                    <div key={index} class="card" style={{width: '18rem'}}>
+                    <div key={index} class="card" className='Card' style={{width: '18rem'}}>
                         <img class="card-img-top" src={data.image} alt="Card image cap"/>
                         <div class="card-body">
                             <h5 class="card-title">{data.title}</h5>
@@ -44,11 +44,11 @@ class Dashboard extends Component {
         return (
             <div class="m-3 mt-5">
                 <div class="row justify-content-center">
-                    <div class="col-lg-9 col-md-3 col-sm-12 p-0 text-center">
-                        <input type="text" class="form-control search-slt" value={this.state.title} name="title" onChange={this.handleChangeInput} placeholder="Search"/>
+                    <div class="col-lg-9 col-md-12 col-sm-12 p-0 text-center" style={{ maxWidth: '350px', margin: '5 auto', marginRight: '5px'}}>
+                        <input type="text" class="form-control search-slt" value={this.state.title} name="title" onChange={this.handleChangeInput} placeholder="Search Light Novel"/>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                        <button type="button" class="btn btn-outline-success" onClick={() => this.handleSearchButton()}>Search</button>
+                        <button type="button" class="btn btn-info" onClick={() => this.handleSearchButton()}>Search</button>
                     </div>
                 </div>
                 <div class="row mt-5">

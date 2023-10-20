@@ -6,6 +6,7 @@ import Home from '../Home';
 import Orders from '../Orders';
 import Products from '../Products';
 import Customer from '../Customer';
+import './assets/css/style.css';
 
 export default class Main extends Component {
   state = { activePage: ''}
@@ -22,7 +23,7 @@ export default class Main extends Component {
     render() {
         return (
           <div class="row">
-            <div class="col-3 text-white bg-dark" style={{width: '300px', height: '100vh'}}>
+            <div class="col-3 text-white bg-dark" className='sidebar' style={{width: '300px', height: '100vh'}}>
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
       <span class="fs-4" style={{marginLeft:'100px', marginTop:'10px'}}>Sidebar</span>
     </a>
