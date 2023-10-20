@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Dashboard extends Component {
+class Top extends Component {
     render() {
         return (
             <div>
-                Dashboard!
+                Top IMDBS! 123
             </div>
         );
     }
 }
 
-export default Dashboard;
+export default Top;
