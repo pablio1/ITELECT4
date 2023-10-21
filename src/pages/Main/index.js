@@ -27,13 +27,13 @@ handleClickSidebar = (pages) => {
       <div class="row" >
         <Navbar/>
          
-        <div class="col-9">
+        
           <Switch>
               <Route path="/dashboard" component = {Dashboard}/>
               <Route path="/lightnovel" component = {LightNovel}/>
               <Route path="/home" component = {Home}/>
           </Switch>
-        </div>
+        
       </div>
     );
   }

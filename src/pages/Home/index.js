@@ -6,7 +6,7 @@ import './home.css';
 class Home extends Component {
     state = {title: '', results:[], image: null}
     componentDidMount(){
-        this.fetchLightNovels();
+        this.handleSearchButton();
     }
     handleChangeInput = (e) => {
         this.setState({[e.target.name]: e.target.value})
@@ -53,13 +53,11 @@ class Home extends Component {
     
     render() {
         return (
-            <div>
+            <div style={{backgroundColor: 'blanchedalmond  '}}>
               Welcome User ^^!
-              <form class="d-flex" role="search">
-        
-        
-      
+            
               <div className='searchbar'>
+              <form class="d-flex">
                 <input
                     class="form-control me-2"
                     type="text"
@@ -69,9 +67,28 @@ class Home extends Component {
                     aria-label="Search"
                     placeholder="Search"
                 />
+                </form>
                 <button class="btn btn-outline-success" type="submit" onClick={this.handleSearchButton}>Search</button>
+                
+                <div>
+          
+            <div className="row mt-3">
+            {this.state.results && this.state.results.map((result, index) => (
+              <div key={index} className="col-md-4 mb-3">
+                <div style={{ width: '15rem'}}>
+                  <div className="card border border-dark">
+                  <img src={result.image} alt={result.title} />
+                  </div>
+                  <center><b><p>{result.title}</p></b></center>
+                </div>
+                
+              </div>
+            ))}
+            </div>
+          
+        </div>
 
-                    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                    {/* <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                         {this.state.results && this.state.results.map((result, index) => (
                         <div key={index} class="card" style={{width: '18rem'}}>
                             <img class="card-img-top" src={result.image} alt="Card image cap"/>
@@ -81,9 +98,10 @@ class Home extends Component {
                                 </div>
                         </div>
           ))}
-                    </div>
+                    </div> */}
+                    
                 </div>
-                </form>
+                
             </div>
           );
           
