@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Gangsta from './../../assets/gangsta.jpg'
-import Ghoul from './../../assets/ghoul.jpg'
-import Hitman from './../../assets/hitman.jpg'
-import Hellsing from './../../assets/Hsing.jpg'
-import Kurapika from './../../assets/kurapika.jpg'
-import Monster from './../../assets/mons.jpg'
-import Sololeveling from './../../assets/sl.jpg'
-import Returnmaddemon from './../../assets/ReturnMadDemon.jpg'
+import Gangsta from './../../assets/gang.png'
+import Ghoul from './../../assets/ken.png'
+import Hitman from './../../assets/re.png'
+import Hellsing from './../../assets/sing.png'
+import Kurapika from './../../assets/kura.png'
+import Monster from './../../assets/mon.png'
+import Sololeveling from './../../assets/solo.png'
+import Returnmaddemon from './../../assets/mad.png'
 
 class Dashboard extends Component {
     render() {
