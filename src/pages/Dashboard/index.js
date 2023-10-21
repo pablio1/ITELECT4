@@ -34,7 +34,7 @@ class Dashboard extends Component {
                         <img class="card-img-top" src={data.image} alt="Card image cap"/>
                         <div class="card-body">
                             <h5 class="card-title">{data.title}</h5>
-                            <button class="btn btn-primary">Read</button>
+                            <button class="btn btn-primary">Watch</button>
                         </div>
                     </div>
                 )
