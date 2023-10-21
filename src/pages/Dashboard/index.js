@@ -1,105 +1,61 @@
-import React, { Component } from 'react';
-import Gangsta from './../../assets/gang.png'
-import Ghoul from './../../assets/ken.png'
-import Hitman from './../../assets/re.png'
-import Hellsing from './../../assets/sing.png'
-import Kurapika from './../../assets/kura.png'
-import Monster from './../../assets/mon.png'
-import Sololeveling from './../../assets/solo.png'
-import Returnmaddemon from './../../assets/mad.png'
+import React, { Component, Fragment } from 'react';
+import axios from 'axios';
 
 class Dashboard extends Component {
+    state = {searchAnime: '', lists: [], image: null};
+    handleSearch = e => {
+        if(e.key === "Enter"){
+            //API, data, header
+            var header  = {
+                "Access-Control-Allow-Origin": "*"
+            }
+            axios.get("https://api.consumet.org/manga/mangadex/"+this.state.searchAnime,header)
+            .then(response =>{
+                this.setState({
+                    lists: response.data.results
+                })
+            })
+        }
+    }
+    handleChangeInput = e =>{
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
     render() {
+        //?:
+        const { lists } = this.state;
+        var movieLists = lists.length !== 0 ? lists.map((data, index) => {
+            return (
+                <Fragment>
+                     <div className="row">
+                        <div className="col-4">
+                            <div class="card">
+                                <img class="card-img-top" src={data.image} alt="Card image cap"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">{data.title}</h5>
+                                    <div href="#" class="btn btn-primary">Watch</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Fragment>
+            )
+        }) : "Movie Not Found!";
+
         return (
-            <div className="row">
-                <div className="col-md-4 mb-3">
-                        <div className="card" style={{ width: '18rem' }}>
-                            <img className="card-img-top" src={Gangsta} alt="Card cap" />
-                            <div className="card-body">
-                               <center><h5 className="card-title">The Way Of Husband</h5></center> 
-                                
-                                <center><a href="#" className="btn btn-primary">Read</a></center>
-                            </div>
+            <Fragment>
+                <div className="row">
+                    <div className='col-12'>
+                        <div class="form-group">
+                            <input name="searchAnime" value={this.state.searchAnime} onKeyDown={this.handleSearch} 
+                            onChange={this.handleChangeInput} type="email" class="form-control" 
+                            id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seach"/>
                         </div>
                     </div>
-
-                    <div className="col-md-4 mb-3">
-                        <div className="card" style={{ width: '18rem' }}>
-                            <img className="card-img-top" src={Ghoul} alt="Card cap" />
-                            <div className="card-body">
-                            <center><h5 className="card-title">Tokyo Ghoul</h5></center>
-                                
-                                <center><a href="#" className="btn btn-primary">Read</a></center>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-md-4 mb-3">
-                        <div className="card" style={{ width: '18rem' }}>
-                            <img className="card-img-top" src={Hellsing} alt="Card cap" />
-                            <div className="card-body">
-                            <center><h5 className="card-title">Hellsing</h5></center>
-                                
-                                <center><a href="#" className="btn btn-primary">Read</a></center>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-md-4 mb-3">
-                        <div className="card" style={{ width: '18rem' }}>
-                            <img className="card-img-top" src={Hitman} alt="Card cap" />
-                            <div className="card-body">
-                            <center><h5 className="card-title">Hitman Reborn</h5></center>
-                                
-                                <center><a href="#" className="btn btn-primary">Read</a></center>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div className="col-md-4 mb-3">
-                        <div className="card" style={{ width: '18rem' }}>
-                            <img className="card-img-top" src={Kurapika} alt="Card cap" />
-                            <div className="card-body">
-                            <center><h5 className="card-title">Hunter x Hunter</h5></center>
-                                
-                                <center><a href="#" className="btn btn-primary">Read</a></center>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-md-4 mb-3">
-                        <div className="card" style={{ width: '18rem' }}>
-                            <img className="card-img-top" src={Monster} alt="Card cap" />
-                            <div className="card-body">
-                            <center><h5 className="card-title">Monster</h5></center>
-                                
-                                <center><a href="#" className="btn btn-primary">Read</a></center>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-md-4 mb-3">
-                        <div className="card" style={{ width: '18rem' }}>
-                            <img className="card-img-top" src={Sololeveling} alt="Card cap" />
-                            <div className="card-body">
-                            <center><h5 className="card-title">Solo Leveling</h5></center>
-                                
-                                <center><a href="#" className="btn btn-primary">Read</a></center>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-md-4 mb-3">
-                        <div className="card" style={{ width: '18rem' }}>
-                            <img className="card-img-top" src={Returnmaddemon} alt="Card cap" />
-                            <div className="card-body">
-                                <center><h5 className="card-title">Return Of The Mad Demon</h5></center>
-                                
-                                <center><a href="#" className="btn btn-primary">Read</a></center>
-                            </div>
-                        </div>
-                    </div>
-            </div>
+                </div>
+               {movieLists}
+            </Fragment>
         );
     }
 }
