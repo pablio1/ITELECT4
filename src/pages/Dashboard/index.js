@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import HarryPotter1 from './../../images/harrypotter1.jpg'
-import HarryPotter2 from './../../images/harrypotter2.jpg'
-import HarryPotter3 from './../../images/harrypotter3.jpg'
-import HarryPotter4 from './../../images/harrypotter4.jpg'
-import HarryPotter5 from './../../images/harrypotter5.jpg'
-import HarryPotter6 from './../../images/harrypotter6.jpg'
-import HarryPotter7 from './../../images/harrypotter7.jpg'
-import HarryPotter8 from './../../images/harrypotter8.jpg'
+import MissionImpossible1 from './../../images/MissionImpossible1.jpg'
+import MissionImpossible2 from './../../images/MissionImpossible2.jpg'
+import MissionImpossible3 from './../../images/MissionImpossible3.jpg'
+import MissionImpossible4 from './../../images/MissionImpossible4.jpg'
+import MissionImpossible5 from './../../images/MissionImpossible5.jpg'
+import MissionImpossible6 from './../../images/MissionImpossible6.jpg'
+import MissionImpossible7 from './../../images/MissionImpossible7.jpg'
+import MissionImpossible8 from './../../images/MissionImpossible8.jpg'
 
 class Dashboard extends Component {
     render() {
@@ -24,9 +24,9 @@ class Dashboard extends Component {
 
                 <div className="col-md-4 mb-3">
                     <div className="card" style={{ width: '18rem' }}>
-                        <img className="card-img-top" src={HarryPotter1} alt="Card cap" />
+                        <img className="card-img-top" src={MissionImpossible1} alt="Card cap" />
                         <div className="card-body">
-                            <center><h5 className="card-title">Harry Potter and the Philosopher's Stone</h5></center> 
+                            <center><h5 className="card-title">Mission Impossible 1</h5></center> 
                             <center><a href="#" className="btn btn-primary">Watch</a></center>
                         </div>
                     </div>
@@ -34,9 +34,9 @@ class Dashboard extends Component {
 
                 <div className="col-md-4 mb-3">
                     <div className="card" style={{ width: '18rem' }}>
-                        <img className="card-img-top" src={HarryPotter2} alt="Card cap" />
+                        <img className="card-img-top" src={MissionImpossible2} alt="Card cap" />
                         <div className="card-body">
-                            <center><h5 className="card-title">Harry Potter and the Chamber of Secrets</h5></center> 
+                            <center><h5 className="card-title">Mission Impossible 2</h5></center> 
                             <center><a href="#" className="btn btn-primary">Watch</a></center>
                         </div>
                     </div>
@@ -44,9 +44,9 @@ class Dashboard extends Component {
 
                 <div className="col-md-4 mb-3">
                     <div className="card" style={{ width: '18rem' }}>
-                        <img className="card-img-top" src={HarryPotter3} alt="Card cap" />
+                        <img className="card-img-top" src={MissionImpossible3} alt="Card cap" />
                         <div className="card-body">
-                            <center><h5 className="card-title">Harry Potter and the Prisoner of Azkaban</h5></center> 
+                            <center><h5 className="card-title">Mission Impossible 3</h5></center> 
                             <center><a href="#" className="btn btn-primary">Watch</a></center>
                         </div>
                     </div>
@@ -54,9 +54,9 @@ class Dashboard extends Component {
 
                 <div className="col-md-4 mb-3">
                     <div className="card" style={{ width: '18rem' }}>
-                        <img className="card-img-top" src={HarryPotter4} alt="Card cap" />
+                        <img className="card-img-top" src={MissionImpossible4} alt="Card cap" />
                         <div className="card-body">
-                            <center><h5 className="card-title">Harry Potter and the Goblet of Fire</h5></center> 
+                            <center><h5 className="card-title">MissionImpossible4</h5></center> 
                             <center><a href="#" className="btn btn-primary">Watch</a></center>
                         </div>
                     </div>
@@ -64,7 +64,7 @@ class Dashboard extends Component {
 
                 <div className="col-md-4 mb-3">
                     <div className="card" style={{ width: '18rem' }}>
-                        <img className="card-img-top" src={HarryPotter5} alt="Card cap" />
+                        <img className="card-img-top" src={MissionImpossible5} alt="Card cap" />
                         <div className="card-body">
                             <center><h5 className="card-title">Harry Potter and the Order of the Phoenix</h5></center> 
                             <center><a href="#" className="btn btn-primary">Watch</a></center>
@@ -74,7 +74,7 @@ class Dashboard extends Component {
 
                 <div className="col-md-4 mb-3">
                     <div className="card" style={{ width: '18rem' }}>
-                        <img className="card-img-top" src={HarryPotter6} alt="Card cap" />
+                        <img className="card-img-top" src={MissionImpossible6} alt="Card cap" />
                         <div className="card-body">
                             <center><h5 className="card-title">Harry Potter and the Half-Blood Prince</h5></center> 
                             <center><a href="#" className="btn btn-primary">Watch</a></center>
@@ -84,9 +84,9 @@ class Dashboard extends Component {
 
                 <div className="col-md-4 mb-3">
                     <div className="card" style={{ width: '18rem' }}>
-                        <img className="card-img-top" src={HarryPotter7} alt="Card cap" />
+                        <img className="card-img-top" src={MissionImpossible7} alt="Card cap" />
                         <div className="card-body">
-                            <center><h5 className="card-title">Harry Potter and the Deathly Hallows (Part 1)</h5></center> 
+                            <center><h5 className="card-title">Mission Impossible 7(Part 1)</h5></center> 
                             <center><a href="#" className="btn btn-primary">Watch</a></center>
                         </div>
                     </div>
@@ -94,9 +94,9 @@ class Dashboard extends Component {
 
                 <div className="col-md-4 mb-3">
                     <div className="card" style={{ width: '18rem' }}>
-                        <img className="card-img-top" src={HarryPotter8} alt="Card cap" />
+                        <img className="card-img-top" src={MissionImpossible8} alt="Card cap" />
                         <div className="card-body">
-                            <center><h5 className="card-title">Harry Potter and the Deathly Hallows (Part 2)</h5></center> 
+                            <center><h5 className="card-title">Mission Impossible 8(Part 2)</h5></center> 
                             <center><a href="#" className="btn btn-primary">Watch</a></center>
                         </div>
                     </div>

@@ -9,7 +9,7 @@ class Main extends Component {
     state = { activePage: '' }
     componentDidMount = () => {
         this.setState({
-            activePage: 'dashboard'
+            activePage: ''
         })
     }
 
