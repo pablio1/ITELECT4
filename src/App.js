@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Login from './pages/Login';
-import Register from './pages/Register';
 import Main from './pages/Main';
+import Dashboard from './pages/Dashboard';
+import Home from './pages/Home';
 //import Home from '.
 
 class App extends Component {
@@ -10,8 +10,8 @@ class App extends Component {
         return (
             <Switch>
                 <Route path="/" component = {Main}  />
-                <Route path="/register" component = {Register}  />
-                <Route path="/Main" component = {Main} />
+                <Route path="/dashboard" component = {Dashboard}  />
+                <Route path="/home" component = {Home}  />
             </Switch>
         );
     }
