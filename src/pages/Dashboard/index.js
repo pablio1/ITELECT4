@@ -13,7 +13,7 @@ class Dashboard extends Component {
         const headers = {
             'Access-Control-Allow-Origin' : '*'
         }
-        axios.get('https://api.consumet.org/light-novels/readlightnovels/'+title, headers)
+        axios.get('https://api.consumet.org/movies/dramacool/'+title, headers)
         .catch((e) => {
             console.log(e);
             return {status: 401, message: 'Unauthorized'}
@@ -45,7 +45,7 @@ class Dashboard extends Component {
             <div class="m-3 mt-5">
                 <div class="row justify-content-center">
                     <div class="col-lg-9 col-md-12 col-sm-12 p-0 text-center" style={{ maxWidth: '350px', margin: '5 auto', marginLeft: 'auto'}}>
-                        <input type="text" class="form-control search-slt" value={this.state.title} name="title" onChange={this.handleChangeInput} placeholder="Search Light Novel"/>
+                        <input type="text" class="form-control search-slt" value={this.state.title} name="title" onChange={this.handleChangeInput} placeholder="Search Movie"/>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                         <button type="button" class="btn btn-info" onClick={() => this.handleSearchButton()}>Search</button>
