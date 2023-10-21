@@ -44,7 +44,7 @@ class Dashboard extends Component {
         return (
             <div class="m-3 mt-5">
                 <div class="row justify-content-center">
-                    <div class="col-lg-9 col-md-12 col-sm-12 p-0 text-center" style={{ maxWidth: '350px', margin: '5 auto', marginRight: '5px'}}>
+                    <div class="col-lg-9 col-md-12 col-sm-12 p-0 text-center" style={{ maxWidth: '350px', margin: '5 auto', marginLeft: 'auto'}}>
                         <input type="text" class="form-control search-slt" value={this.state.title} name="title" onChange={this.handleChangeInput} placeholder="Search Light Novel"/>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-12 p-0">
