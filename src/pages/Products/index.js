@@ -9,7 +9,7 @@ export default class Products extends Component {
 
 
                     <div>
-            <center><h1>HEADER</h1></center>  
+            <center><h1>Products</h1></center>  
             <div className='main'>
                     <div className='left'><h1>left</h1></div> 
                     <div className='right'><h1>RIGHT</h1></div> 
