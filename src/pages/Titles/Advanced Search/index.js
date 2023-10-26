@@ -30,13 +30,25 @@ class Search extends Component {
             this.state.results.map((data, index) => {
                     console.log(data);
                     return (
-                        <div key ={index} class="card shadow-sm">
-                            <img class="bd-placeholder-img card-img-top" src={data.image} alt="Card image cap" width="100%" height="225"/>
-                            <div class="card-body">
-                                <h5 class="card-title">{data.title}</h5>
-                                <button class="btn btn-primary">Read</button>
+                        <div style={{padding: '10px 5px'}}>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div key ={index} class="card shadow-sm">
+                                        <img class="bd-placeholder-img card-img-top" src={data.image} alt="Card image cap" width="100%" height="225"/>
+                                        <div class="card-body">
+                                            <p class="card-text">Call description here</p>
+                                            <h5 class="card-title">{data.title}</h5>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-outline-secondary">Bookmark</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary">Read</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                       
+                       
                     )
                 })              
             ) : "";
