@@ -26,13 +26,13 @@ class Search extends Component {
     }
     render() {
 
-            var books = this.state.results.length !==0 ? (
-                this.state.results.map((data, index) => {
+        var books = this.state.results.length !== 0 ? (
+            this.state.results.map((data, index) => {
                     console.log(data);
                     return (
                         <div key ={index} class="card shadow-sm">
                             <img class="bd-placeholder-img card-img-top" src={data.image} alt="Card image cap" width="100%" height="225"/>
-                            <div class="card body">
+                            <div class="card-body">
                                 <h5 class="card-title">{data.title}</h5>
                                 <button class="btn btn-primary">Read</button>
                             </div>
@@ -53,8 +53,8 @@ class Search extends Component {
                 </div>
 
                 <div style={{padding:'5px'}}>
-                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search"/>
-                    <button type="button" class="btn btn-primary">Search</button>
+                <input type="search" className="form-control" placeholder="Search..." aria-label="Search" onChange={this.handleChangeInput} />
+                <button type="button" className="btn btn-primary" onClick={this.handleSearchButton}>Search</button>
                 </div>
 
                 <div style={{padding: '10px 5px'}}>
