@@ -5,6 +5,7 @@ import Register from './pages/Register';
 import Main from './pages/Main';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
+import Orders from './pages/Orders';
 class App extends Component {
     render() {
         return (
@@ -15,6 +16,7 @@ class App extends Component {
                 <Route path="/home" component = {Home}  />
                 <Route path="/register" component = {Register}  />
                 <Route path="/main" component = {Main} />
+                <Route path="/Orders" component = {Orders} />
             </Switch>
         );
     }

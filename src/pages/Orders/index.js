@@ -1,24 +1,33 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react';
 
-export default class Orders extends Component {
-  render() {
-    return (
-      <div>
-                <title>RIGISTER PAGE</title>
-                    <center><h1>REGISTER PAGE</h1></center> 
+function Orders() {
+  const [orders, setOrders] = useState([]);
+  const [newOrder, setNewOrder] = useState('');
 
+  const handleAddOrder = () => {
+    if (newOrder.trim() !== '') {
+      setOrders([...orders, newOrder]);
+      setNewOrder('');
+    }
+  };
 
-                    <div>
-            <center><h1>HEADER</h1></center>  
-            <div className='main'>
-                    <div className='left'><h1>left</h1></div> 
-                    <div className='right'><h1>RIGHT</h1></div> 
-                    <div className='middle'><h1>middle</h1></div>
-            </div>
-            <center><div className='bottom'><h1>bottom</h1></div></center>   
-            
-        </div>
-            </div>
-    )
-  }
+  return (
+    <div>
+      <h1>Orders </h1>
+      <input
+        type="text"
+        placeholder="Enter a new order"
+        value={newOrder}
+        onChange={(e) => setNewOrder(e.target.value)}
+      />
+      <button onClick={handleAddOrder}>Add Order</button>
+      <ul>
+        {orders.map((order, index) => (
+          <li key={index}>{order}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
+
+export default Orders;
