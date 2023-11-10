@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
-import Anime from '../Anime';
-import Categories from '../Categories';
-import Comedy from '../Comedy';
+import {Link, Switch, Route} from 'react-router-dom';
+import Dashboard from '../Dashboard';
 import Home from '../Home';
-import Horror from '../Horror';
-import KDrama from '../Kdrama';
+import Orders from '../Orders';
+
 
 class Main extends Component {
     state = { activePage: '' }
     componentDidMount = () => {
         this.setState({
-            activePage: 'home'
+            activePage: 'dashboard'
+            
         })
+
     }
 
     handleClickSidebar = (page) => {
@@ -23,50 +23,66 @@ class Main extends Component {
 
     render() {
         return (
-            <div>
-                <div class="p-3 text-bg-dark">
-                    <div class="container">
-                    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                        </a>
-
-                        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li><Link to="/home" class="nav-link px-2 text-secondary">Home</Link></li>
-                        <li><Link to="/categories" class="nav-link px-2 text-secondary">Categories</Link></li>
-                        <li><Link to="/k-Drama" class="nav-link px-2 text-secondary">K-Drama</Link></li>
-                        <li><Link to="/anime" class="nav-link px-2 text-secondary">Anime</Link></li>
-                        <li><Link to="/horror" class="nav-link px-2 text-secondary">Horror</Link></li>
-                        <li><Link to="/comedy" class="nav-link px-2 text-secondary">Comedy</Link></li>
+            <div class="row">
+                <div class="col-3 text-white bg-dark" style={{ height: '100vh'}}>
+                    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    
+                    <span class="fs-4">Sidebar</span>
+                    </a>
+                    <hr/>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                        <Link to="/home" onClick={() => this.handleClickSidebar('home')}>
+                            <div class={this.state.activePage === 'home' ? "nav-link active" : "nav-link text-white"} >
+                            Home
+                            </div>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/dashboard"  onClick={() => this.handleClickSidebar('dashboard')}>
+                            <div class={this.state.activePage === 'dashboard' ? "nav-link active" : "nav-link text-white"} >
+                            Dashboard
+                            </div>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/orders" onClick={() => this.handleClickSidebar('orders')}>
+                            <div class={this.state.activePage === 'orders' ?"nav-link active" : "nav-link text-white"}>
+                            Orders
+                            </div>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/products">
+                            <div href="#" class="nav-link text-white">
+                            Products
+                            </div>
+                        </Link>
+                    </li>
                     </ul>
-
-                        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search"/>
-                        </form>
-
-                        <div class="text-end">
-                        <button type="button" class="btn btn-outline-light me-2">Login</button>
-                        <button type="button" class="btn btn-warning">Sign-up</button>
-                        </div>
-                    </div>
+                    <hr/>
+                    <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/HeryJaneAvila.png" alt="" width="70" height="60" class="rounded-circle me-2"/>
+                        <strong>Hery Jane Avila</strong>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
                     </div>
                 </div>
-
-                <Switch>
-                    <Route path="/home" component={Home} />
-                    <Route path="/categories" component={Categories} />
-                    <Route path="/k-drama" component={KDrama} />
-                    <Route path="/anime" component={Anime} />
-                    <Route path="/horror" component={Horror} />
-                    <Route path="/comedy" component={Comedy} />
-                </Switch>
-
+                <div class="col-9">
+                    <Switch>
+                        <Route path="/home" component={Home} />
+                        <Route path="/dashboard" component={Dashboard} />
+                        <Route path="/orders" component={Orders} />
+                    </Switch>
+                </div>
             </div>
-
-            
-        
-
-
-
         );
     }
 }

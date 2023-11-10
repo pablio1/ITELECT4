@@ -1,182 +1,58 @@
-import React, { Component } from 'react';
-
-
+import React, { Component, Fragment } from 'react';
+import axios from 'axios';
 class Home extends Component {
+    state = {searchAnime: "", lists: []};
+    handleSearch = e => {
+        if(e.key === "Enter"){
+            var header = {
+                "Access-Control-Allow-Origin": "*"
+            }
+            axios.get("https://api.consumet.org/movies/viewasian/"+this.state.searchAnime,header)
+            .then(response =>{
+                this.setState({
+                    lists: response.data.results
+                })
+            
+            })
+        }
+    }
+    handleChangeInput = e =>{
+        this.setState({
+            [e.target.name]: e.target.value 
+        })
+       
+    }
     render() {
-        return (
-            <div>
-               <div style={{marginLeft:'20px', marginTop:'20px'}}>
-                    <h1>Movies</h1>
-                </div>
-                <div class="py-5 text-center container">
-                  <div class="row py-lg-5">
-                    <div class="col-lg-6 col-md-8 mx-auto">
-                      <h1 class="fw-light" _msttexthash="205153" _msthash="9" >Album example</h1>
-                      <p class="lead text-muted" _msttexthash="12736789" _msthash="10" >A short description about the album below (its contents, origin, etc.). Keep it short and cute, but not too short so people don't skip this album completely.</p>
-                      <p>
-                        <a href="#" class="btn btn-primary my-2" _msttexthash="318903" _msthash="11" >Main call to action</a>
-                        <a href="#" class="btn btn-secondary my-2" _msttexthash="238524" _msthash="12" >Secondary work</a>
-                      </p>
-                    </div>
-                  </div>
-                  
-                </div>
-
-                <div class="album py-5 bg-light">
-                    <div class="container">
-
-                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                            <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" _mstaria-label="4468347" _mstHash="13" style={{textAlign: 'left'}}><title _mstTextHash="177515" _mstHash="14">Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em" _mstTextHash="134056" _mstHash="15">Thumbnail</text></svg>
-
-                                <div class="card-body">
-                                <p class="card-text" _msttexthash="9321065" _msthash="16" style={{ textAlign: 'left'}}>This is a broader card with supporting text below as a natural introduction to additional content. This content is a little longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" _msttexthash="63401" _msthash="17" style={{}}>width</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" _msttexthash="162188" _msthash="18" style={{}}>modulation</button>
-                                    </div>
-                                    <small class="text-muted" _msttexthash="115934" _msthash="19" style={{ textAlign: 'left'}}></small>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" _mstaria-label="4468347" _mstHash="20" style={{ textAlign: 'left'}}><title _mstTextHash="177515" _mstHash="21">Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em" _mstTextHash="134056" _mstHash="22">Thumbnail</text></svg>
-
-                                <div class="card-body">
-                                <p class="card-text" _msttexthash="9321065" _msthash="23" style={{ textAlign: 'left'}}>This is a broader card with supporting text below as a natural introduction to additional content. This content is a little longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" _msttexthash="63401" _msthash="24" style={{}}>width</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" _msttexthash="162188" _msthash="25" style={{}}>modulation</button>
-                                    </div>
-                                    <small class="text-muted" _msttexthash="115934" _msthash="26" style={{ textAlign: 'left'}}> </small>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" _mstaria-label="4468347" _mstHash="27" style={{textAlign: 'left'}}><title _mstTextHash="177515" _mstHash="28">Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em" _mstTextHash="134056" _mstHash="29">Thumbnail</text></svg>
-
-                                <div class="card-body">
-                                <p class="card-text" _msttexthash="9321065" _msthash="30" style={{ textAlign: 'left'}}>This is a broader card with supporting text below as a natural introduction to additional content. This content is a little longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" _msttexthash="63401" _msthash="31" style={{}}>width</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" _msttexthash="162188" _msthash="32" style={{}}>modulation</button>
-                                    </div>
-                                    <small class="text-muted" _msttexthash="115934" _msthash="33" style={{ textAlign: 'left'}}> </small>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-
-                            <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" _mstaria-label="4468347" _mstHash="34" style={{ textAlign: 'left'}}><title _mstTextHash="177515" _mstHash="35">Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em" _mstTextHash="134056" _mstHash="36">Thumbnail</text></svg>
-
-                                <div class="card-body">
-                                <p class="card-text" _msttexthash="9321065" _msthash="37" style={{ textAlign: 'left'}}>This is a broader card with supporting text below as a natural introduction to additional content. This content is a little longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" _msttexthash="63401" _msthash="38" style={{}}>width</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" _msttexthash="162188" _msthash="39" style={{}}>modulation</button>
-                                    </div>
-                                    <small class="text-muted" _msttexthash="115934" _msthash="40" style={{ textAlign: 'left'}}></small>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" _mstaria-label="4468347" _mstHash="41" style={{ textAlign: 'left'}}><title _mstTextHash="177515" _mstHash="42">Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em" _mstTextHash="134056" _mstHash="43">Thumbnail</text></svg>
-
-                                <div class="card-body">
-                                <p class="card-text" _msttexthash="9321065" _msthash="44" style={{ textAlign: 'left'}}>This is a broader card with supporting text below as a natural introduction to additional content. This content is a little longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" _msttexthash="63401" _msthash="45" style={{}}>width</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" _msttexthash="162188" _msthash="46" style={{}}>modulation</button>
-                                    </div>
-                                    <small class="text-muted" _msttexthash="115934" _msthash="47" style={{ textAlign: 'left'}}></small>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" _mstaria-label="4468347" _mstHash="48" style={{ textAlign: 'left'}}><title _mstTextHash="177515" _mstHash="49">Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em" _mstTextHash="134056" _mstHash="50">Thumbnail</text></svg>
-
-                                <div class="card-body">
-                                <p class="card-text" _msttexthash="9321065" _msthash="51" style={{ textAlign: 'left'}}>This is a broader card with supporting text below as a natural introduction to additional content. This content is a little longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" _msttexthash="63401" _msthash="52" style={{}}>width</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" _msttexthash="162188" _msthash="53" style={{}}>modulation</button>
-                                    </div>
-                                    <small class="text-muted" _msttexthash="115934" _msthash="54" style={{ textAlign: 'left'}}></small>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-
-                            <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" _mstaria-label="4468347" _mstHash="55" style={{ textAlign: 'left'}}><title _mstTextHash="177515" _mstHash="56">Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em" _mstTextHash="134056" _mstHash="57">Thumbnail</text></svg>
-
-                                <div class="card-body">
-                                <p class="card-text" _msttexthash="9321065" _msthash="58" style={{ textAlign: 'left'}}>This is a broader card with supporting text below as a natural introduction to additional content. This content is a little longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" _msttexthash="63401" _msthash="59" style={{}}>width</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" _msttexthash="162188" _msthash="60" style={{}}>modulation</button>
-                                    </div>
-                                    <small class="text-muted" _msttexthash="115934" _msthash="61" style={{ textAlign: 'left'}}></small>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" _mstaria-label="4468347" _mstHash="62"  style={{ textAlign: 'left'}}><title _mstTextHash="177515" _mstHash="63">Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em" _mstTextHash="134056" _mstHash="64">Thumbnail</text></svg>
-
-                                <div class="card-body">
-                                <p class="card-text" _msttexthash="9321065" _msthash="65" style={{ textAlign: 'left'}}>This is a broader card with supporting text below as a natural introduction to additional content. This content is a little longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" _msttexthash="63401" _msthash="66" style={{}}>width</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" _msttexthash="162188" _msthash="67" style={{}}>modulation</button>
-                                    </div>
-                                    <small class="text-muted" _msttexthash="115934" _msthash="68" style={{ textAlign: 'left'}}></small>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" _mstaria-label="4468347" _mstHash="69" style={{ textAlign: 'left'}}><title _mstTextHash="177515" _mstHash="70">Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em" _mstTextHash="134056" _mstHash="71">Thumbnail</text></svg>
-
-                                <div class="card-body">
-                                <p class="card-text" _msttexthash="9321065" _msthash="72" style={{ textAlign: 'left'}}>This is a broader card with supporting text below as a natural introduction to additional content. This content is a little longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" _msttexthash="63401" _msthash="73" style={{}}>width</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" _msttexthash="162188" _msthash="74" style={{}}>modulation</button>
-                                    </div>
-                                    <small class="text-muted" _msttexthash="115934" _msthash="75" style={{ textAlign: 'left'}}></small>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
+        const { lists } = this.state;
+        var movieLists = lists.length !== 0 ? lists.map((data, index) => {
+            return (
+                <Fragment>
+                     <div className="row">
+                    <div className="col-8">
+                        <div class="card">
+                        <img class="card-img-top" src={data.image} alt="Card image cap" />
+                        <div class="card-body">
+                            <h5 class="card-title">{data.title}</h5>
+                            <div href="#" class="btn btn-primary">Watch Now</div>
+                        </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
+                </Fragment>
+            )
+        }) : "Movie not found!"; 
+
+        return (
+            <Fragment>
+                <div className="row">
+                    <div className='col-12'>
+                        <div class="form-group">
+                            <input name= "searchAnime" value={this.state.searchAnime} onKeyDown={this.handleSearch} onChange={this.handleChangeInput} type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Search" />
+                        </div>
+                    </div>    
+                </div>
+               {movieLists}
+            </Fragment>
         );
     }
 }
