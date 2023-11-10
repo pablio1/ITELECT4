@@ -5,6 +5,7 @@ class Orders extends Component {
         return (
             <div>
                 Orders Page
+
             </div>
         );
     }
