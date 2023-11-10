@@ -45,12 +45,10 @@ class Home extends Component {
                     <div className="image-row">
                         <img src={image1} alt="Image1" className="grid-image" />
                         <img src={image2} alt="Image2" className="grid-image" />
-                    </div>
-                    <div className="image-row">
                         <img src={image3} alt="Image3" className="grid-image" />
-                        <img src={image4} alt="Image4" className="grid-image" />
                     </div>
                     <div className="image-row">
+                        <img src={image4} alt="Image4" className="grid-image" />
                         <img src={image5} alt="Image5" className="grid-image" />
                         <img src={image6} alt="Image6" className="grid-image" />
                     </div>
