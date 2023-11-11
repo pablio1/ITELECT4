@@ -5,24 +5,26 @@ import Orders from '../Orders';
 import Products from '../Products';
 import Customers from '../Customers';
 
+
+
 class Main extends Component {
-    state = { activePage: ''}
+    state = { activePage: '' };
+  
     componentDidMount = () => {
-        this.setState({
-            activePage: 'dashboard'
-        })
-    }
-
+      this.setState({
+        activePage: 'dashboard',
+      });
+    };
+  
     handleClickSidebar = (page) => {
-        this.setState({
-            activePage: page
-        })
-
-    }
+      this.setState({
+        activePage: page,
+      });
+    };
     render() {
         return (
             <div class="row">
-                <div class="col-3 text-white bg-dark" style={{height: '200vh'}}>
+                <div class="col-3 text-white bg-dark" style={{height: '48vh'}}>
                     <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <span class="fs-4">eMOVIE</span>
                     </div>
