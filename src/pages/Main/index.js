@@ -28,10 +28,10 @@ class Main extends Component {
                         <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                             <span className="fs-4">Aspire</span>
                         </a>
-                        <div class="input-group">
+                        {/* <div class="input-group">
                         <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                         <button type="button" class="btn btn-outline-primary">search</button>
-                        </div>
+                        </div> */}
                         <hr />
                         <ul className="nav nav-pills flex-column mb-auto">
                             <li className="nav-item">
