@@ -3,7 +3,7 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
-                Welcome to my dashboard!!!
+                Welcome!!
             </div>
         );
     }

@@ -44,6 +44,7 @@ class Home extends Component {
 
         return (
             <Fragment>
+                
                 <div className="row">
                     <div className='col-12'>
                         <div class="form-group">
@@ -51,9 +52,11 @@ class Home extends Component {
                         </div>
                     </div>    
                 </div>
+                
                {movieLists}
             </Fragment>
         );
+       
     }
 }
 
