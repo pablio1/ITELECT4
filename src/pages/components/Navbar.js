@@ -1,11 +1,7 @@
-import React, { useState } from 'react';
-// import * as FaIcons from 'react-icons/fa';
-// import * as AiIcons from 'react-icons/ai';
-// import { Link } from 'react-router-dom';
-// import { SidebarData } from './NavbarData';
+import { Route, Switch } from 'react-router-dom';
 import './Navbars.css';
 import Logo from '../assets/images/AstralLogo.png'
-// import { IconContext } from 'react-icons';
+import Manga from '../Manga'
 
 function Navbar() {
   // const [sidebar, setSidebar] = useState(false);
@@ -13,7 +9,7 @@ function Navbar() {
   // const showSidebar = () => setSidebar(!sidebar);
 
   return (
-    <nav class="navbar navbar-expand-lg"style={{backgroundColor: 'bisque '}}>
+    <nav class="navbar navbar-expand-lg border border-dark"style={{backgroundColor: 'bisque '}}>
   <div class="container-fluid">
     <div className='logo-container'> 
     <a class="navbar-brand" href="/home"><img src={Logo} alt="Logo" className='astralLogo'/></a>
@@ -31,13 +27,13 @@ function Navbar() {
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Light Novels
+            Manga
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Latest Update</a></li>
-            <li><a class="dropdown-item" href="/lightnovels">Novel List</a></li>
+            <li><a class="dropdown-item" href="/manga">Manga List</a></li>
             <li><hr class="dropdown-divider"/></li>
-            <li><a class="dropdown-item" href="#">Random Novel</a></li>
+            <li><a class="dropdown-item" href="#">Random Manga</a></li>
           </ul>
         </li>
         <li class="nav-item">

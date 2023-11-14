@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class LightNovel extends Component {
+class Manga extends Component {
     render() {
         return (
             <div>
@@ -11,4 +11,4 @@ class LightNovel extends Component {
     }
 }
 
-export default LightNovel;
+export default Manga;
