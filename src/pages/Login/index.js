@@ -43,8 +43,10 @@ class Login extends Component {
                         <img class="card-img-top" src={data.image} alt="Card image cap"/>
                         <div class="card-body">
                             <h5 class="card-title">{data.title}</h5>
-                            <p class="card-text">{truncatedDescription}</p>
-                            <button class="btn btn-primary">Watch</button>
+                            <p class="card-text">Description: {truncatedDescription}</p>
+                            <p class="card-text">Release Date: {data.releaseDate}</p>
+                            <p class="card-text">Status: {data.status}</p>
+                            <button class="btn btn-primary">Read</button>
                         </div>
                     </div>
                 )
@@ -55,7 +57,7 @@ class Login extends Component {
             <div class="m-3 mt-5">
                 <div class="row justify-content-center">
                     <div class="col-lg-9 col-md-12 col-sm-12 p-0 text-center" style={{ maxWidth: '350px', margin: '5 auto', marginLeft: 'auto'}}>
-                        <input type="text" class="form-control search-slt" value={this.state.title} name="title" onChange={this.handleChangeInput} placeholder="Search Movie"/>
+                        <input type="text" class="form-control search-slt" value={this.state.title} name="title" onChange={this.handleChangeInput} placeholder="Search Manga"/>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                         <button type="button" class="btn btn-info" onClick={() => this.handleSearchButton()}>Search</button>
