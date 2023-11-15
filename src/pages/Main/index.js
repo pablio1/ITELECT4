@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Link, Switch, Route} from 'react-router-dom'
 import Dashboard from '../Dashboard'
 import Login from '../Login'
+import './style.css'
 export default class Main extends Component {
   state = { activePage: '' }
   componentDidMount = () => {
@@ -17,7 +18,7 @@ export default class Main extends Component {
   render() {
     return (
       <div class="row">
-      <div class="col-3 flex-shrink-0 p-3 text-white bg-dark" style={{width: '280px', height: '100vh'}}>
+      <div class="col-3 flex-shrink-0 p-3 text-white bg-dark" className='sidebar' style={{width: '280px', height: '100vh'}}>
         <a href="/login" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
             <img
