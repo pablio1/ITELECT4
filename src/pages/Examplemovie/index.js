@@ -1,6 +1,7 @@
-import React, { Component, Fragment, View } from 'react';
+import React, { Component, Fragment, View,} from 'react';
 
 import axios from 'axios';
+
 
 class Examplemovie extends Component {
     state = {searchAnime: '', lists: []};
@@ -23,15 +24,50 @@ class Examplemovie extends Component {
             [e.target.name]: e.target.value
         })
     }
+    
     render() {
         //?:
+        
+
+
+        const getInfo = (about) => {
+        var answer = "";
+        //const Tempstate = {Templists: []};
+        var Tempheader  = {
+            "Access-Control-Allow-Origin": "*"
+        }
+        axios.get("https://api.consumet.org/movies/viewasian/info?id="+about,Tempheader)
+            .then(response =>{
+                answer = response.data.description
+                alert(answer);
+            })
+        
+        // const { Templists } = this.Tempstate;
+         //alert(answer);
+        };
+        
+
+        // Using the example query "tv/watch-vincenzo-67955", and looking at the 2nd page of results.
+        const url = "https://api.consumet.org/movies/viewasian/info?id=drama/vincenzo";
+        const data = async () => {
+            try {
+                const { data } = await axios.get(url);
+                return data;
+            } catch (err) {
+                throw new Error(err.message);
+            }
+        };
+         
+       
         const { lists } = this.state;
+        
         const measure = Math.round(lists.length / 3);
         const secondList = lists.slice(0,measure);
         const thirdList = lists.slice(measure, measure * 2);
         const fourthList = lists.slice(measure * 2);
-        var movieLists = secondList.secondList !== 0 ? secondList.map((data, index) => {
+        var movieLists = secondList.length !== 0 ? secondList.map((data, index) => {
             return (
+                
                 <Fragment>
 
 <div class="album py-2 bg-light"  style = {{display:"flex",  flexDirection:"row"}}>    
@@ -49,7 +85,7 @@ class Examplemovie extends Component {
         <p class="card-text">{data.title}</p>
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Play Trailer</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" onClick={() => {getInfo(data.id)}}>Play Trailer</button>
             <button type="button" class="btn btn-sm btn-primary">Watch</button>
           </div>
           
@@ -88,7 +124,7 @@ class Examplemovie extends Component {
         <p class="card-text">{data.title}</p>
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Play Trailer</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" onClick={() => {getInfo(data.id)}}>Play Trailer</button>
             <button type="button" class="btn btn-sm btn-primary">Watch</button>
           </div>
           
@@ -127,7 +163,7 @@ class Examplemovie extends Component {
         <p class="card-text">{data.title}</p>
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Play Trailer</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" onClick={() => {getInfo(data.id)}}>Play Trailer</button>
             <button type="button" class="btn btn-sm btn-primary">Watch</button>
           </div>
           
