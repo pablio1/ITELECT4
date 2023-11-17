@@ -6,7 +6,7 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movieData: null,
+      animeData: null,
       loading: false,
       error: null,
       searchTerm: localStorage.getItem('searchTerm') || '',
@@ -14,28 +14,28 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    // Fetch movie data when the component mounts
-    this.fetchMovieData();
+    // Fetch anime data when the component mounts
+    this.fetchAnimeData();
   }
 
-  fetchMovieData = async () => {
+  fetchAnimeData = async () => {
     // Set loading to true before making the API request
     this.setState({ loading: true, error: null });
 
     try {
-      // Make the API request to Consumet for movies
-      const response = await axios.get(`https://api.consumet.org/movies/dramacool/${this.state.searchTerm}`);
+      // Make the API request to Consumet for anime
+      const response = await axios.get(`https://api.consumet.org/anime/gogoanime/${this.state.searchTerm}`);
 
       // Log the response to the console
       console.log('API response:', response);
 
-      // Update the state with the fetched movie data
-      this.setState({ movieData: response.data.results, loading: false });
+      // Update the state with the fetched anime data
+      this.setState({ animeData: response.data.results, loading: false });
     } catch (error) {
       // Handle errors and update the state with the error message
-      console.error('Error fetching movie data:', error);
+      console.error('Error fetching anime data:', error);
       this.setState({
-        error: `An error occurred while fetching movie data: ${error.message || 'Unknown error'}`,
+        error: `An error occurred while fetching anime data: ${error.message || 'Unknown error'}`,
         loading: false,
       });
     }
@@ -50,12 +50,12 @@ class Dashboard extends Component {
   };
 
   handleSearch = () => {
-    // Call fetchMovieData when the search button is clicked
-    this.fetchMovieData();
+    // Call fetchAnimeData when the search button is clicked
+    this.fetchAnimeData();
   };
 
   render() {
-    const { movieData, loading, error, searchTerm } = this.state;
+    const { animeData, loading, error, searchTerm } = this.state;
     return (
       <div className="m-3">
         {/* Search Bar */}
@@ -83,27 +83,27 @@ class Dashboard extends Component {
           </div>
         </div>
 
-        {/* Display loading message while movie data is being fetched */}
+        {/* Display loading message while anime data is being fetched */}
         {loading && <p>Loading...</p>}
 
         {/* Display error message if an error occurred */}
         {error && <p>Error: {error}</p>}
 
-        {/* Display the fetched movie data if available */}
+        {/* Display the fetched anime data if available */}
         <div>
-          {Array.isArray(movieData) && movieData.length > 0 ? (
+          {Array.isArray(animeData) && animeData.length > 0 ? (
             <div className="row mt-3">
-              {movieData.map((movie) => (
-                <div key={movie.id} className="col-md-4 mb-3">
+              {animeData.map((anime) => (
+                <div key={anime.id} className="col-md-4 mb-3">
                   <div style={{ width: '15rem' }}>
                     <div className="card border border-dark">
-                      <img src={movie.image} alt={movie.title} />
+                      <img src={anime.image} alt={anime.title} />
                     </div>
                     <div style={{ textDecoration: 'none' }}>
-                      <Link to={`/view/${movie.id}`}>
+                      <Link to={`/view/${anime.id}`}>
                         <center>
                           <b>
-                            <p>{movie.title}</p>
+                            <p>{anime.title}</p>
                           </b>
                         </center>
                       </Link>
@@ -113,11 +113,11 @@ class Dashboard extends Component {
               ))}
             </div>
           ) : (
-            <p>No movies found.</p>
+            <p>No anime found.</p>
           )}
         </div>
 
-        {/* You can add a Route for displaying the movie details when a movie is clicked */}
+        {/* You can add a Route for displaying the anime details when an anime is clicked */}
       </div>
     );
   }

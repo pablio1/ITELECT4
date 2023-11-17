@@ -26,7 +26,7 @@ class Main extends Component {
             <div class="row">
                 <div class="col-3 text-white bg-dark" style={{height: '48vh'}}>
                     <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-4">eMOVIE</span>
+                    <span class="fs-4">eANIME</span>
                     </div>
                     <hr/>
                     <ul class="nav nav-pills flex-column mb-auto">
