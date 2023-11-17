@@ -44,11 +44,16 @@ class AnimeDescription extends Component {
             </div>
             <div className='px-5'>
               <h2>{animeDetails.title}</h2>
-              <b>
-                <p>{animeDetails.description}</p>
-              </b>
-              {/* Other details */}
-              {/* ... */}
+              <div className="anime-details">
+                <p className="mb-2">Other Name: {animeDetails.otherName}</p>
+                <p className="mb-2">Genre: {animeDetails.genres}</p>
+                <p className="mb-2">Total Episodes: {animeDetails.totalEpisodes}</p>
+                <p className="mb-2">Release Date: {animeDetails.releaseDate}</p>
+                <p className="mb-2">Status: {animeDetails.status}</p>
+              </div>
+              <div className="anime-description mt-3">
+                <p className="mb-2">Description: {animeDetails.description}</p>
+              </div>
             </div>
           </div>
         ) : (
