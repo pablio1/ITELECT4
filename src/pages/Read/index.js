@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import '../Movie/movie.css'; // Assuming you have a CSS file for styling
+import './MovieDetails.css'; // You can create a CSS file for styling
 
-class Movie extends Component {
+class MovieDetails extends Component {
   state = {
     movieDetails: null,
     loading: true,
@@ -10,14 +10,11 @@ class Movie extends Component {
   };
 
   componentDidMount() {
-    // Retrieve movie ID from the route params
-    const movieId = this.props.match.params.id;
-
     // Replace this URL with your movie API endpoint
-    axios.get(`https://api.consumet.org/movies/viewasian//${movieId}`)
+    axios.get('https://api.consumet.org/movies/viewasian/') // Use a dynamic movie ID based on your application logic
       .then((response) => {
         this.setState({
-          movieDetails: response.data.data,
+          movieDetails: response.data,
           loading: false,
         });
       })
@@ -40,33 +37,19 @@ class Movie extends Component {
       return <p>Error: {error}</p>;
     }
 
-    const bannerStyle = {
-      backgroundImage: `https://api.consumet.org/movies/viewasian//(${movieDetails.images.poster})`, // Adjust the property based on your movie API response
-    };
-
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-6">
-            <div className="banner" style={bannerStyle} />
-            <div className="card">
-              <img
-                src={movieDetails.images.poster}
-                alt={movieDetails.title}
-                className="card-img-top"
-              />
-              <div className="card-body">
-                <h5 className="card-title">{movieDetails.title}</h5>
-              </div>
-            </div>
-          </div>
-          <div className="col-sm-6">
-            <div className="card card-synopsis">
-              <div className="card-body">
-                <h5 className="card-title">Synopsis</h5>
-                <p className="card-text">{movieDetails.synopsis}</p>
-              </div>
-            </div>
+      <div className="movie-details-container">
+        <div className="movie-details">
+          <img
+            src={movieDetails.poster} // Adjust the property based on your movie API response
+            alt={movieDetails.title}
+            className="movie-poster"
+          />
+          <div className="movie-info">
+            <h2 className="movie-title">{movieDetails.title}</h2>
+            <p className="movie-release-date">Release Date: {movieDetails.releaseDate}</p>
+            <p className="movie-genre">Genre: {movieDetails.genre}</p>
+            <p className="movie-synopsis">{movieDetails.synopsis}</p>
           </div>
         </div>
       </div>
@@ -74,4 +57,4 @@ class Movie extends Component {
   }
 }
 
-export default Movie;
+export default MovieDetails;
