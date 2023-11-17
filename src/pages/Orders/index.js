@@ -4,26 +4,30 @@ import axios from 'axios';
 
 export default class Orders extends Component {
   state = {searchAnime: '', lists: []};
-    handleSearch = e => {
-        if(e.key === "Enter"){
-            //API, data, header
-            var header  = {
-                "Access-Control-Allow-Origin": "*"
-            }
-            //https://docs.consumet.org/rest-api/Movies/viewasian/get-movie-info
-            //axios.get("https://api.consumet.org/movies/viewasian/"+this.state.searchAnime,header)
-            axios.get("https://api.consumet.org/movies/viewasian/info?id=drama/" + this.state.searchAnime, header)
-            //axios.get("https://api.consumet.org/movies/viewasian/info?id=drama/"+this.state.searchAnime,header)
-            .then(response =>{
-                this.setState({
-                    lists: response.data.results
-                    
-                })
-               // console.log(response.data.results);
-            })
-        }
-        
+  handleSearch = e => {
+    if (e.key === "Enter") {
+      // API, data, header
+      var header = {
+        "Access-Control-Allow-Origin": "*"
+      };
+  
+      axios
+        .get(
+          "https://api.consumet.org/movies/viewasian/info?id=drama/" +
+            this.state.searchAnime,
+          header
+        )
+        .then(response => {
+          console.log("API Response:", response.data); // Log the response data
+          this.setState({
+            lists: response.data.results
+          });
+        })
+        .catch(error => {
+          console.error("API Error:", error); // Log any errors
+        });
     }
+  };
     
     handleChangeInput = e =>{
         this.setState({
@@ -31,42 +35,65 @@ export default class Orders extends Component {
         })
     }
     render() {
-      //?:
-      const { lists } = this.state;
-      var movieLists = lists.length !== 0 ? lists.map((data, index) => {
-          return (
-              <Fragment>
-                   <div className="row">
-                      <div className="col-4">
-                          <div class="card">
-                              <img href="#" class="card-img-top" src={data.image} alt="Card image cap"/>
-                              <p>asdfasdf</p>
-                              <div class="card-body">
-                                    
-                                  <h5 class="card-title">{data.title}</h5>
-                                  <div href="#" class="btn btn-primary">Watch</div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </Fragment>
-          )
-      }) : "Movie Not Found!";
-
-      return (
-          <Fragment>
+        const { lists } = this.state;
+      
+        if (!lists) {
+          return "Loading..."; // or another loading indicator
+        }
+      
+        var movieLists = lists.length !== 0 ? (
+          lists.map((data, index) => (
+            <Fragment key={index}>
               <div className="row">
-                  <div className='col-12'>
-                      <div class="form-group">
-                          <input name="searchAnime" value={this.state.searchAnime} onKeyDown={this.handleSearch} 
-                          onChange={this.handleChangeInput} type="email" class="form-control" 
-                          id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seach"/>
-                      </div>
+                <div className="col-4">
+                  <div className="card">
+                    <img className="card-img-top" src={data.image} alt="Card image cap" />
+                    <div className="card-body">
+                      <h5 className="card-title">{data.title}</h5>
+                      <p className="card-text">{data.description}</p>
+      
+                      <div className="btn btn-primary">Watch</div>
+      
+                      <h6>Chapters:</h6>
+                      <ul>
+                        {data.episodes.map((episode, i) => (
+                          <li key={i}>
+                            <a href={episode.url} target="_blank" rel="noopener noreferrer">
+                              {episode.title}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
+                </div>
               </div>
-             {movieLists}
+            </Fragment>
+          ))
+        ) : "Movie Not Found!";
+      
+        return (
+          <Fragment>
+            <div className="row">
+              <div className="col-12">
+                <div className="form-group">
+                  <input
+                    name="searchAnime"
+                    value={this.state.searchAnime}
+                    onKeyDown={this.handleSearch}
+                    onChange={this.handleChangeInput}
+                    type="text"
+                    className="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Search"
+                  />
+                </div>
+              </div>
+            </div>
+            {movieLists}
           </Fragment>
-      );
-  }
+        );
+      }
 }
 
