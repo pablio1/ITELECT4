@@ -10,14 +10,20 @@ export default class Orders extends Component {
             var header  = {
                 "Access-Control-Allow-Origin": "*"
             }
+            //https://docs.consumet.org/rest-api/Movies/viewasian/get-movie-info
             axios.get("https://api.consumet.org/movies/viewasian/"+this.state.searchAnime,header)
+            //axios.get("https://api.consumet.org/movies/viewasian/info?id=drama/"+this.state.searchAnime,header)
             .then(response =>{
                 this.setState({
                     lists: response.data.results
+                    
                 })
+               // console.log(response.data.results);
             })
         }
+        
     }
+    
     handleChangeInput = e =>{
         this.setState({
             [e.target.name]: e.target.value
@@ -32,8 +38,10 @@ export default class Orders extends Component {
                    <div className="row">
                       <div className="col-4">
                           <div class="card">
-                              <img class="card-img-top" src={data.image} alt="Card image cap"/>
+                              <img href="#" class="card-img-top" src={data.image} alt="Card image cap"/>
+                              <p>asdfasdf</p>
                               <div class="card-body">
+                                    
                                   <h5 class="card-title">{data.title}</h5>
                                   <div href="#" class="btn btn-primary">Watch</div>
                               </div>
