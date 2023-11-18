@@ -11,8 +11,8 @@ export default class Orders extends Component {
                 "Access-Control-Allow-Origin": "*"
             }
             //https://docs.consumet.org/rest-api/Movies/viewasian/get-movie-info
-            //axios.get("https://api.consumet.org/movies/viewasian/"+this.state.searchAnime,header)
-            axios.get("https://api.consumet.org/movies/viewasian/info?id=drama/" + this.state.searchAnime, header)
+            axios.get("https://api.consumet.org/movies/viewasian/"+this.state.searchAnime,header)
+            //axios.get("https://api.consumet.org/movies/viewasian/info?id=drama/" + this.state.searchAnime, header)
             //axios.get("https://api.consumet.org/movies/viewasian/info?id=drama/"+this.state.searchAnime,header)
             .then(response =>{
                 this.setState({
