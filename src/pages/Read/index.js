@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './MovieDetails.css'; // You can create a CSS file for styling
+import './read.css'; // You can create a CSS file for styling
 
 class MovieDetails extends Component {
   state = {
@@ -9,9 +9,10 @@ class MovieDetails extends Component {
     error: null,
   };
 
+  
   componentDidMount() {
     // Replace this URL with your movie API endpoint
-    axios.get('https://api.consumet.org/movies/viewasian/') // Use a dynamic movie ID based on your application logic
+    axios.get(`https://api.consumet.org/movies/viewasian/info?id={}`) // Use a dynamic movie ID based on your application logic
       .then((response) => {
         this.setState({
           movieDetails: response.data,

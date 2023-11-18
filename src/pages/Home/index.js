@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 class Home extends Component {
     state = {searchAnime: '', lists: []};
@@ -14,6 +15,8 @@ class Home extends Component {
                 this.setState({
                     lists: response.data.results
                 })
+                console.log(this.state);
+                
             })
         }
     }
@@ -27,19 +30,22 @@ class Home extends Component {
         const { lists } = this.state;
         var movieLists = lists.length !== 0 ? lists.map((data, index) => {
             return (
-                <Fragment>
+                <Link to="/Details">
+                    <Fragment>
                      <div className="row">
                         <div className="col-4">
                             <div class="card">
                                 <img class="card-img-top" src={data.image} alt="Card image cap"/>
                                 <div class="card-body">
                                     <h5 class="card-title">{data.title}</h5>
+                                    <p>{data.url}</p>
                                     <div href="#" class="btn btn-primary">Watch</div>
                                 </div>
-                            </div>
+                            </div>  
                         </div>
                     </div>
                 </Fragment>
+                </Link>
             )
         }) : "Movie Not Found!";
 
