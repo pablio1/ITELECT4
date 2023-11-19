@@ -1,72 +1,103 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom'; // Assuming you are using React Router
 
 export default class Orders extends Component {
-  state = {searchAnime: '', lists: []};
-    handleSearch = e => {
-        if(e.key === "Enter"){
-            //API, data, header
-            var header  = {
-                "Access-Control-Allow-Origin": "*"
-            }
-            //https://docs.consumet.org/rest-api/Movies/viewasian/get-movie-info
-            axios.get("https://api.consumet.org/movies/viewasian/"+this.state.searchAnime,header)
-            //axios.get("https://api.consumet.org/movies/viewasian/info?id=drama/"+this.state.searchAnime,header)
-            //axios.get("https://api.consumet.org/movies/viewasian/info?id=drama/"+this.state.searchAnime,header)
-            .then(response =>{
-                this.setState({
-                    lists: response.data.results
-                    
-                })
-               // console.log(response.data.results);
-            })
-        }
-        
-    }
-    
-    handleChangeInput = e =>{
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
-    render() {
-      //?:
-      const { lists } = this.state;
-      var movieLists = lists.length !== 0 ? lists.map((data, index) => {
-          return (
-              <Fragment>
-                   <div className="row">
-                      <div className="col-4">
-                          <div class="card">
-                              <img href="#" class="card-img-top" src={data.image} alt="Card image cap"/>
-                              <p>asdfasdf</p>
-                              <div class="card-body">
-                                    
-                                  <h5 class="card-title">{data.title}</h5>
-                                  <div href="#" class="btn btn-primary">Watch</div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </Fragment>
+    state = { searchAnime: '', lists: [], selectedImageUrl: null };
+  
+    handleChangeInput = (e) => {
+      this.setState({
+        [e.target.name]: e.target.value,
+      });
+    };
+  
+    handleSearch = (e) => {
+      if (e.key === 'Enter') {
+        // API, data, header
+        var header = {
+          'Access-Control-Allow-Origin': '*',
+        };
+        axios
+          .get(
+            'https://api.consumet.org/movies/viewasian/' +
+              this.state.searchAnime,
+            header
           )
-      }) : "Movie Not Found!";
-
-      return (
-          <Fragment>
+          .then((response) => {
+            this.setState({
+              lists: response.data.results,
+            });
+          });
+      }
+    };
+  
+    handleWatchClick = (imageUrl) => {
+        // Set the selected image URL in the component state
+        this.setState({
+          selectedImageUrl: imageUrl,
+        });
+    
+        // Store the selected image URL in localStorage
+        localStorage.setItem('selectedImageUrl', imageUrl);
+      };
+  
+    render() {
+      const { lists, selectedImageUrl } = this.state;
+  
+      const movieLists =
+        lists.length !== 0 ? (
+          lists.map((data, index) => (
+            <Fragment key={index}>
               <div className="row">
-                  <div className='col-12'>
-                      <div class="form-group">
-                          <input name="searchAnime" value={this.state.searchAnime} onKeyDown={this.handleSearch} 
-                          onChange={this.handleChangeInput} type="email" class="form-control" 
-                          id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seach"/>
-                      </div>
+                <div className="col-4">
+                  <div className="card">
+                    <img
+                      href="#"
+                      className="card-img-top"
+                      src={data.image}
+                      alt="Card image cap"
+                    />
+                    <p>asdfasdf</p>
+                    <div className="card-body">
+                      <h5 className="card-title">{data.title}</h5>
+                      <Link
+                        to="/products"
+                        className="btn btn-primary"
+                        onClick={() => this.handleWatchClick(data.image)}
+                      >
+                        Watch
+                      </Link>
+                    </div>
                   </div>
+                </div>
               </div>
-             {movieLists}
-          </Fragment>
+            </Fragment>
+          ))
+        ) : (
+          <p>Movie Not Found!</p>
+        );
+  
+      return (
+        <Fragment>
+          <div className="row">
+            <div className="col-12">
+              <div className="form-group">
+                <input
+                  name="searchAnime"
+                  value={this.state.searchAnime}
+                  onKeyDown={this.handleSearch}
+                  onChange={this.handleChangeInput}
+                  type="email"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Search"
+                />
+              </div>
+            </div>
+          </div>
+          {movieLists}
+        </Fragment>
       );
+    }
   }
-}
-

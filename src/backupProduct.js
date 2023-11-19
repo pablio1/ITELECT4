@@ -57,12 +57,6 @@ export default class Products extends Component {
             <Fragment>
                 <div className="row">
                 <div className="col-12">
-                <img
-                  href="#"
-                  className="card-img-top"
-                  src={localStorage.getItem('selectedImageUrl')}
-                  alt="Card image cap"
-                />
                     <h2>Title: {this.state.selectedAnime.title}</h2>
                     <p>Description: {this.state.selectedAnime.description}</p>
                 </div>
