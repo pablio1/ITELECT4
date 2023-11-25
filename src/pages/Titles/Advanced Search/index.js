@@ -27,6 +27,12 @@ class Search extends Component {
             });
     };
 
+    handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            this.handleSearchButton();
+        }
+    };
+
     render() {
         const { results } = this.state;
 
