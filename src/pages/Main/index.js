@@ -3,8 +3,7 @@ import {Link, Switch, Route} from 'react-router-dom';
 import Dashboard from '../Dashboard';
 import Home from '../Home';
 import Orders from '../Orders';
-
-
+import MovieBox from '../../MovieBox';
 class Main extends Component {
     state = { activePage: '' }
     componentDidMount = () => {
@@ -21,6 +20,7 @@ class Main extends Component {
         })
     }
 
+    
     render() {
         return (
             <div class="row">
@@ -53,6 +53,13 @@ class Main extends Component {
                         </Link>
                     </li>
                     <li>
+                        <Link to="/moviebox" onClick={() => this.handleClickSidebar('moviebox')}>
+                            <div class={this.state.activePage === 'orders' ?"nav-link active" : "nav-link text-white"}>
+                            MovieBox
+                            </div>
+                        </Link>
+                    </li>
+                    <li>
                         <Link to="/products">
                             <div href="#" class="nav-link text-white">
                             Products
@@ -80,8 +87,12 @@ class Main extends Component {
                         <Route path="/home" component={Home} />
                         <Route path="/dashboard" component={Dashboard} />
                         <Route path="/orders" component={Orders} />
+                        <Route path="/moviebox" component={MovieBox} />
+                       
+                        
                     </Switch>
                 </div>
+               
             </div>
         );
     }
