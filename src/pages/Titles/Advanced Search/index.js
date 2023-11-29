@@ -45,50 +45,63 @@ class Search extends Component {
   render() {
     const { results } = this.state;
 
-    const slides = results.map((data, index) => (
-      <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={index}>
-        <img
-          className="d-block w-100"
-          src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
-          alt="Card"
-        />
-      </div>
-    ));
-
-    return (
-      <div>
-        <div className="container" style={{ backgroundColor: 'black', marginTop: '50px', overflow: 'hidden' }}>
-          <div style={{ display: 'flex', marginBottom: '10px' }}>
-            <input
-              className="form-control"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-              name="title"
-              value={this.state.title}
-              onChange={this.handleChangeInput}
-              onKeyPress={this.handleEnterKeyPress}
-              style={{ marginRight: '10px' }}
-            />
-            <button className="btn btn-outline-success" type="button" onClick={this.handleSearchButton}>
-              Search
-            </button>
-          </div>
-          <div
-            id="carouselExampleSlidesOnly"
-            className="carousel slide"
-            data-bs-ride="carousel"
-            style={{ margin: '-16px' }}
-          >
-            <div className="carousel-inner" style={{ display: 'flex', flexWrap: 'nowrap' }}>
-              {slides}
+    const movies = results.map((data, index) => (
+      <div className="col-md-4 mb-5" key={index}>
+        <div className="card shadow-sm">
+          <img
+            className="bd-placeholder-img card-img-top"
+            src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+            alt="Card"
+            style={{ objectFit: 'contain', height: '225px', backgroundColor: 'black' }}
+          />
+          <div className="card-body">
+            <p className="card-text">{data.overview}</p>
+            <h5 className="card-title">{data.title}</h5>
+            <div className="btn-group">
+              <button type="button" className="btn btn-sm btn-outline-secondary">
+                Favorite
+              </button>
+              <button type="button" className="btn btn-sm btn-outline-secondary">
+                Watch
+              </button>
             </div>
           </div>
         </div>
       </div>
+    ));
+
+    const rows = [];
+    for (let i = 0; i < movies.length; i += 3) {
+      const row = (
+        <div className="row" key={i}>
+          {movies.slice(i, i + 3)}
+        </div>
+      );
+      rows.push(row);
+    }
+
+    return (
+      <div>
+        <div className="container" style={{ display: 'flex', marginTop: '20px', marginBottom: '10px' }}>
+          <input
+            className="form-control"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            name="title"
+            value={this.state.title}
+            onChange={this.handleChangeInput}
+            onKeyPress={this.handleEnterKeyPress}
+            style={{ marginRight: '10px' }}
+          />
+          <button className="btn btn-outline-success" type="button" onClick={this.handleSearchButton}>
+            Search
+          </button>
+        </div>
+        {rows}
+      </div>
     );
   }
 }
-
 
 export default Search;

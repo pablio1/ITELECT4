@@ -4,47 +4,68 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: [],
+      trendingResults: [],
+      actionResults: [],
+      comedyResults: [],
       activeIndex: 0,
     };
   }
 
   componentDidMount() {
     const apiKey = 'e0974c020cbeb2405fbcd50373c47001'; // Replace with your actual API key
-    const url = `https://api.themoviedb.org/3/trending/all/week?api_key=${apiKey}&language=en-US`;
 
-    fetch(url)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
+    // Fetch trending movies
+    fetch(`https://api.themoviedb.org/3/trending/all/week?api_key=${apiKey}&language=en-US`)
+      .then(response => response.json())
       .then(data => {
-        if (!data.results) {
+        if (data.results) {
+          this.setState({ trendingResults: data.results });
+        } else {
           throw new Error('Results not present in the API response');
         }
-        this.setState({ results: data.results });
       })
-      .catch(error => console.error('Error fetching data:', error));
+      .catch(error => console.error('Error fetching trending data:', error));
+
+    // Fetch action movies
+    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=28`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.results) {
+          this.setState({ actionResults: data.results });
+        } else {
+          throw new Error('Results not present in the API response');
+        }
+      })
+      .catch(error => console.error('Error fetching action data:', error));
+
+    // Fetch comedy movies
+    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=35`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.results) {
+          this.setState({ comedyResults: data.results });
+        } else {
+          throw new Error('Results not present in the API response');
+        }
+      })
+      .catch(error => console.error('Error fetching comedy data:', error));
   }
 
   handlePrev = () => {
-    this.setState((prevState) => ({
-      activeIndex: (prevState.activeIndex - 1 + this.state.results.length) % this.state.results.length,
+    this.setState(prevState => ({
+      activeIndex: (prevState.activeIndex - 1 + this.state.trendingResults.length) % this.state.trendingResults.length,
     }));
   };
 
   handleNext = () => {
-    this.setState((prevState) => ({
-      activeIndex: (prevState.activeIndex + 1) % this.state.results.length,
+    this.setState(prevState => ({
+      activeIndex: (prevState.activeIndex + 1) % this.state.trendingResults.length,
     }));
   };
 
-  renderCarouselItems() {
-    const { results, activeIndex } = this.state;
+  renderCarouselItems(results) {
+    const { activeIndex } = this.state;
 
-    // Take the first three movies
     const firstThreeMovies = results.slice(0, 3);
 
     return firstThreeMovies.map((data, index) => (
@@ -70,7 +91,97 @@ class Home extends Component {
     ));
   }
 
+  renderActionMovies() {
+    const { actionResults } = this.state;
+
+    const containerStyle = {
+      display: 'flex',
+      overflowX: 'auto',
+      padding: '10px 0',
+      gap: '10px',
+    };
+
+    const cardStyle = {
+      flex: '0 0 auto',
+      width: '175px',
+      height: '275px',
+      backgroundColor: 'black',
+      borderRadius: '5px',
+      overflow: 'hidden',
+    };
+
+    const imageStyle = {
+      height: '100%',
+      width: '100%',
+      objectFit: 'cover',
+    };
+
+    return (
+      <div>
+        <h3 style={{ paddingTop: '10px' }}>Action Movies</h3>
+        <div style={containerStyle}>
+          {actionResults.map((data, index) => (
+            <div key={index} style={cardStyle}>
+              {/* Card content, you can customize this as needed */}
+              <img
+                src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+                alt={`Action Movie ${index + 1}`}
+                style={imageStyle}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  renderComedyMovies() {
+    const { comedyResults } = this.state;
+
+    const containerStyle = {
+      display: 'flex',
+      overflowX: 'auto',
+      padding: '10px 0',
+      gap: '10px',
+    };
+
+    const cardStyle = {
+      flex: '0 0 auto',
+      width: '175px',
+      height: '275px',
+      backgroundColor: 'black',
+      borderRadius: '5px',
+      overflow: 'hidden',
+    };
+
+    const imageStyle = {
+      height: '100%',
+      width: '100%',
+      objectFit: 'cover',
+    };
+
+    return (
+      <div>
+        <h3 style={{ paddingTop: '10px' }}>Comedy Movies</h3>
+        <div style={containerStyle}>
+          {comedyResults.map((data, index) => (
+            <div key={index} style={cardStyle}>
+              {/* Card content, you can customize this as needed */}
+              <img
+                src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+                alt={`Comedy Movie ${index + 1}`}
+                style={imageStyle}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   render() {
+    const { trendingResults } = this.state;
+
     return (
       <div>
         <h3 style={{ paddingTop: '30px' }}>Popular New Titles</h3>
@@ -88,7 +199,7 @@ class Home extends Component {
             ))}
           </div>
           <div className="carousel-inner">
-            {this.renderCarouselItems()}
+            {this.renderCarouselItems(trendingResults)}
           </div>
           <button
             className="carousel-control-prev"
@@ -111,6 +222,9 @@ class Home extends Component {
             <span className="visually-hidden">Next</span>
           </button>
         </div>
+
+        {this.renderActionMovies()}
+        {this.renderComedyMovies()}
       </div>
     );
   }
