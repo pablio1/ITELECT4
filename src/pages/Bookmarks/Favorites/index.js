@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class index extends Component {
+class Favorites extends Component {
     render() {
         return (
             <div>
@@ -211,4 +211,4 @@ class index extends Component {
     }
 }
 
-export default index;
+export default Favorites;

@@ -1,202 +1,119 @@
 import React, { Component } from 'react';
 
 class Home extends Component {
-    render() {
-        return (
-            <div>
-                <h3 style={{paddingTop: '30px'}}>Popular New Titles</h3>
-                <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class="active" aria-current="true"></button>
-                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
-                    </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item">
-                            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
-                            <div class="container">
-                                <div class="carousel-caption text-start">
-                                    <h1>Example headline.</h1>
-                                    <p class="opacity-75">Some representative placeholder content for the first slide of the carousel.</p>
-                                    <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item active">
-                            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
-                            <div class="container">
-                                <div class="carousel-caption">
-                                    <h1>Another example headline.</h1>
-                                    <p>Some representative placeholder content for the second slide of the carousel.</p>
-                                    <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
-                            <div class="container">
-                                <div class="carousel-caption text-end">
-                                    <h1>One more for good measure.</h1>
-                                    <p>Some representative placeholder content for the third slide of this carousel.</p>
-                                    <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
+  constructor(props) {
+    super(props);
+    this.state = {
+      results: [],
+      activeIndex: 0,
+    };
+  }
 
-                <div class="album py-5 bg-body-tertiary">
-                    <div class="container">
-                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                            <div class="col">
-                                <div class="card shadow-sm">
-                                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                                    <div class="card-body">
-                                        <p class="card-text">Call description here</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <small class="text-body-secondary">9 mins</small>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Bookmark</button>
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Read</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card shadow-sm">
-                                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                                    <div class="card-body">
-                                        <p class="card-text">Call description here</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <small class="text-body-secondary">9 mins</small>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Bookmark</button>
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Read</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card shadow-sm">
-                                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                                    <div class="card-body">
-                                        <p class="card-text">Call description here</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <small class="text-body-secondary">9 mins</small>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Bookmark</button>
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Read</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card shadow-sm">
-                                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                                    <div class="card-body">
-                                        <p class="card-text">Call description here</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <small class="text-body-secondary">9 mins</small>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Bookmark</button>
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Read</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card shadow-sm">
-                                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                                    <div class="card-body">
-                                        <p class="card-text">Call description here</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <small class="text-body-secondary">9 mins</small>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Bookmark</button>
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Read</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card shadow-sm">
-                                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                                    <div class="card-body">
-                                        <p class="card-text">Call description here</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <small class="text-body-secondary">9 mins</small>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Bookmark</button>
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Read</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card shadow-sm">
-                                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                                    <div class="card-body">
-                                        <p class="card-text">Call description here</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <small class="text-body-secondary">9 mins</small>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Bookmark</button>
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Read</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card shadow-sm">
-                                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                                    <div class="card-body">
-                                        <p class="card-text">Call description here</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <small class="text-body-secondary">9 mins</small>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Bookmark</button>
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Read</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card shadow-sm">
-                                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                                    <div class="card-body">
-                                        <p class="card-text">Call description here</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <small class="text-body-secondary">9 mins</small>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Bookmark</button>
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Read</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
+  componentDidMount() {
+    const apiKey = 'e0974c020cbeb2405fbcd50373c47001'; // Replace with your actual API key
+    const url = `https://api.themoviedb.org/3/trending/all/week?api_key=${apiKey}&language=en-US`;
+
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (!data.results) {
+          throw new Error('Results not present in the API response');
+        }
+        this.setState({ results: data.results });
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }
+
+  handlePrev = () => {
+    this.setState((prevState) => ({
+      activeIndex: (prevState.activeIndex - 1 + this.state.results.length) % this.state.results.length,
+    }));
+  };
+
+  handleNext = () => {
+    this.setState((prevState) => ({
+      activeIndex: (prevState.activeIndex + 1) % this.state.results.length,
+    }));
+  };
+
+  renderCarouselItems() {
+    const { results, activeIndex } = this.state;
+
+    // Take the first three movies
+    const firstThreeMovies = results.slice(0, 3);
+
+    return firstThreeMovies.map((data, index) => (
+      <div
+        className={`carousel-item ${index === activeIndex ? 'active' : ''}`}
+        key={index}
+        style={{ height: '300px', maxWidth: '100%', overflow: 'hidden', backgroundColor: 'black' }}
+      >
+        <img
+          src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+          className="d-block w-100"
+          alt={`Slide ${index + 1}`}
+          style={{ height: '300px', width: '200px', objectFit: 'contain' }}
+        />
+        <div className="container">
+          <div className="carousel-caption text-start">
+            <h1>{data.title}</h1>
+            <p className="opacity-75">{data.overview}</p>
+            {/* Add your additional content here */}
+          </div>
+        </div>
+      </div>
+    ));
+  }
+
+  render() {
+    return (
+      <div>
+        <h3 style={{ paddingTop: '30px' }}>Popular New Titles</h3>
+        <div id="myCarousel" className="carousel slide mb-6" data-bs-ride="carousel">
+          <div className="carousel-indicators">
+            {Array.from({ length: 3 }, (_, index) => (
+              <button
+                key={index}
+                type="button"
+                data-bs-target="#myCarousel"
+                data-bs-slide-to={index}
+                className={index === 0 ? 'active' : ''}
+                aria-label={`Slide ${index + 1}`}
+              ></button>
+            ))}
+          </div>
+          <div className="carousel-inner">
+            {this.renderCarouselItems()}
+          </div>
+          <button
+            className="carousel-control-prev"
+            type="button"
+            data-bs-target="#myCarousel"
+            data-bs-slide="prev"
+            onClick={this.handlePrev}
+          >
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button
+            className="carousel-control-next"
+            type="button"
+            data-bs-target="#myCarousel"
+            data-bs-slide="next"
+            onClick={this.handleNext}
+          >
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Home;
