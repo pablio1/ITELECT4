@@ -3,7 +3,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 import Home from '../Home';
 import AdvancedSearch from '../Titles/Advanced Search';
 import UpcomingMovies from '../Titles/Upcoming Movies';
-import LatestUpdates from '../Titles/Latest Updates';
+import TopRated from '../Titles/Top Rated';
 import Updates from '../Bookmarks/Updates';
 import Favorites from '../Bookmarks/Favorites';
 import History from '../Bookmarks/History';
@@ -15,7 +15,7 @@ class Main extends Component {
     handleClickSidebar = (page) => {
         this.setState({
             activePage: page,
-        });
+        }); 
     };
 
     render() {
@@ -66,7 +66,7 @@ class Main extends Component {
                                 <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><Link to="/advanced-search"><div class="link-body-emphasis d-inline-flex text-decoration-none rounded">Advanced Search</div></Link></li>
                                     <li><Link to="/upcoming-movies"><div class="link-body-emphasis d-inline-flex text-decoration-none rounded">Upcoming Movies</div></Link></li>
-                                    <li><Link to="/latest-updates"><div class="link-body-emphasis d-inline-flex text-decoration-none rounded">Latest Updates</div></Link></li>
+                                    <li><Link to="/top-rated"><div class="link-body-emphasis d-inline-flex text-decoration-none rounded">Top Rated</div></Link></li>
                                     <li><Link to="/"><div class="link-body-emphasis d-inline-flex text-decoration-none rounded">Random</div></Link></li>
                                 </ul>
                             </div>
@@ -87,7 +87,7 @@ class Main extends Component {
                                 <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><Link to="/updates"><div class="link-body-emphasis d-inline-flex text-decoration-none rounded">Updates</div></Link></li>
                                     <li><Link to="/Favorites"><div class="link-body-emphasis d-inline-flex text-decoration-none rounded">Favorites</div></Link></li>
-                                    <li><Link to="/watch-history"><div class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reading History</div></Link></li>
+                                    <li><Link to="/watch-history"><div class="link-body-emphasis d-inline-flex text-decoration-none rounded">Watch History</div></Link></li>
                                 </ul>
                             </div>
                         </li>
@@ -126,7 +126,7 @@ class Main extends Component {
                         <Route path="/home" component={Home} />
                         <Route path="/advanced-search" component={AdvancedSearch} />
                         <Route path="/upcoming-movies" component={UpcomingMovies} />
-                        <Route path="/latest-updates" component={LatestUpdates} />
+                        <Route path="/top-rated" component={TopRated} />
                         <Route path="/updates" component={Updates} />
                         <Route path="/favorites" component={Favorites} />
                         <Route path="/watch-history" component={History} />

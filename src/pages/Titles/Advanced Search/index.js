@@ -22,7 +22,7 @@ class Search extends Component {
 
   fetchSearchResults = () => {
     const { title } = this.state;
-    const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMDk3NGMwMjBjYmViMjQwNWZiY2Q1MDM3M2M0NzAwMSIsInN1YiI6IjY1MGU3YjY5M2E0YTEyMDBlMjkzYzgyZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.H2XveuanlVm4S3PWtrs3bR8g6neiFAsUuE9hp_5YiJM'; // Replace with your actual API key
+    const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMDk3NGMwMjBjYmViMjQwNWZiY2Q1MDM3M2M0NzAwMSIsInN1YiI6IjY1MGU3YjY5M2E0YTEyMDBlMjkzYzgyZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.H2XveuanlVm4S3PWtrs3bR8g6neiFAsUuE9hp_5YiJM';
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${apiKey}`
