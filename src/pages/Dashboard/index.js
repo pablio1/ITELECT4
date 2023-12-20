@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import MangaDescription from './MangaDescription';
-import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -11,38 +9,35 @@ class Dashboard extends Component {
       animeData: null,
       loading: false,
       error: null,
-      searchTerm: localStorage.getItem('searchTerm') || '', // Retrieve from local storage
-      selectedManga: null,
+      searchTerm: localStorage.getItem('searchTerm') || '',
     };
   }
 
-  componentDidMount() {
-    // Fetch anime data when the component mounts
-    this.fetchAnimeData();
-  }
 
   fetchAnimeData = async () => {
     // Set loading to true before making the API request
     this.setState({ loading: true, error: null });
-  
+
     try {
-      // Make the API request to Jikan for top anime
-      const response = await axios.get(`https://api.jikan.moe/v4/manga?q=${this.state.searchTerm}`);
-  
+      // Make the API request to Kitsu for anime
+      const response = await axios.get(`https://kitsu.io/api/edge/manga?filter[text]=${this.state.searchTerm}`);
+
       // Log the response to the console
       console.log('API response:', response);
-      
-  
-      // Update the state with the fetched anime data
-      this.setState({ animeData: response.data, loading: false });
-    } catch (error) {
 
+      // Update the state with the fetched anime data
+      this.setState({ animeData: response.data.data, loading: false });
+    } catch (error) {
       // Handle errors and update the state with the error message
       console.error('Error fetching anime data:', error);
       this.setState({ error: 'An error occurred while fetching anime data', loading: false });
     }
   };
-  
+
+  componentDidMount() {
+    // Fetch anime data when the component mounts
+    this.fetchAnimeData();
+  }
 
   handleSearchInputChange = (event) => {
     const searchTerm = event.target.value;
@@ -97,17 +92,17 @@ class Dashboard extends Component {
         <div>
           {animeData && (
             <div className="row mt-3">
-              {animeData.data.map((anime) => (
-                <div key={anime.mal_id} className="col-md-4 mb-3">
+              {animeData.map((anime) => (
+                <div key={anime.id} className="col-md-4 mb-3">
                   <div style={{ width: '15rem' }}>
                     <div className="card border border-dark">
-                      <img src={anime.images.jpg.image_url} alt={anime.title} />
+                      <img src={anime.attributes.posterImage.small} alt={anime.attributes.titles.en} />
                     </div>
                     <div style={{ textDecoration: 'none' }}>
-                    <Link to={`/view/${anime.mal_id}`}>
+                    <Link to={`/view/${anime.id}`}>
                       <center>
                         <b>
-                          <p>{anime.title}</p>
+                          <p>{anime.attributes.titles.en}</p>
                         </b>
                       </center>
                     </Link>
@@ -118,21 +113,6 @@ class Dashboard extends Component {
             </div>
           )}
         </div>
-
-        {/* Use the render prop of Route to keep the Dashboard component mounted */}
-        {/* <Route
-          path="/view/:mal_id"
-          render={({ match }) => {
-            const manga = animeData && animeData.data.find((manga) => manga.mal_id.toString() === match.params.mal_id);
-            return manga ? <MangaDescription manga={manga} /> : null;
-          }}
-        /> */}
-        {/* <Switch>
-          <Route exact path="/view/:mal_id" component={MangaDescription} />
-        </Switch> */}
-        
-
-
       </div>
     );
   }

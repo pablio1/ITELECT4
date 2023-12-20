@@ -4,13 +4,15 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Main from './pages/Main/Main';
 import MangaDescription from './pages/Dashboard/MangaDescription';
+import ChapterDetails from './pages/Dashboard/ChapterDetails';
 
 class App extends Component {
     render() {
         return (
             <Switch>
                 {/* Specific route for manga details */}
-                <Route exact path="/view/:mal_id" component={MangaDescription} />
+                <Route exact path="/view/:mangaId" component={MangaDescription} />
+                <Route path="/chapter/:chapterId" component={ChapterDetails} />
 
                 {/* Other routes */}
                 <Route path="/login" component={Login} />

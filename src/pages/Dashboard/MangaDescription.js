@@ -1,24 +1,44 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class MangaDescription extends Component {
   constructor(props) {
     super(props);
     this.state = {
       mangaDetails: null,
+      genres: [],
+      chapters: [],
       error: null,
     };
   }
 
   fetchMangaDetails = async () => {
     const { match } = this.props;
-    const mal_id = match.params.mal_id;
+    const mangaId = match.params.mangaId;
 
     try {
-      const response = await axios.get(`https://api.jikan.moe/v4/manga/${mal_id}`);
-      console.log('Manga Details API response:', response.data);
+      // Make the API request to Kitsu for manga details
+      const response = await axios.get(`https://kitsu.io/api/edge/manga/${mangaId}`);
+      const genresResponse = await axios.get(`https://kitsu.io/api/edge/manga/${mangaId}/genres`);
+      const chaptersResponse = await axios.get(`https://kitsu.io/api/edge/manga/${mangaId}/relationships/chapters`);
 
-      this.setState({ mangaDetails: response.data });
+      // Extract chapters link from relationships
+      // const chaptersLink = response.data.data.relationships.chapters.links.related;
+      
+      // Make the API request to fetch chapters
+      // const chaptersResponse = await axios.get(chaptersLink);
+
+      console.log('Manga Details API response:', response);
+      console.log('Genres API response:', genresResponse);
+      console.log('Chapters API response:', chaptersResponse);
+
+      this.setState({
+        mangaDetails: response.data.data,
+        genres: genresResponse.data.data,
+        chapters: chaptersResponse.data.data,
+        error: null,
+      });
     } catch (error) {
       console.error('Error fetching manga details:', error);
       this.setState({ error: 'An error occurred while fetching manga details' });
@@ -27,59 +47,99 @@ class MangaDescription extends Component {
 
   componentDidMount() {
     this.fetchMangaDetails();
-
   }
 
-
-
   render() {
-    const { mangaDetails, error } = this.state;
+    const { mangaDetails, genres, chapters, error } = this.state;
 
     if (error) {
       return <p>Error: {error}</p>;
     }
 
     return (
-      <div className='container mt-5'>
+      <div className="container mt-5 pb-5">
+        <div className="mb-3">
+          <Link to="/dashboard">Back</Link>
+        </div>
         {mangaDetails ? (
-          <div className='d-flex flex-row'>
+          <div className="d-flex flex-row">
             <div>
-              <img className='border border-dark' style={{ width: 300 }} src={mangaDetails.data.images.jpg.image_url} alt={mangaDetails.title} />
+              <img
+                className="border border-dark"
+                style={{ width: 300 }}
+                src={mangaDetails.attributes.posterImage.small}
+                alt={mangaDetails.attributes.titles.en}
+              />
             </div>
-            <div className='px-5'>
-              <h2>{mangaDetails.data.title}</h2>
-              <p className="mb-0">Rank: {mangaDetails.data.rank}</p>
-              <p className="mb-0">Authors: {mangaDetails.data.authors.map((author) => (
-                  <span key={author.mal_id}>{author.name}</span>
-                 ))}
+            <div className="px-5">
+              <h2>{mangaDetails.attributes.titles.en}</h2>
+              <p className="mb-0">Rank: {mangaDetails.attributes.popularityRank}</p>
+              <p className="mb-0">Status: {mangaDetails.attributes.status}</p>
+              <p className="mb-0">Type: {mangaDetails.attributes.mangaType}</p>
+              <p className="mb-0">Published: {mangaDetails.attributes.startDate}</p>
+              <p className="mb-0">Popularity: {mangaDetails.attributes.popularityRank}</p>
+              <p className="mb-0 d-flex align-items-center">
+                Score:{' '}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  style={{ marginLeft: '5px', marginRight: '5px' }}
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                </svg>
+                {mangaDetails.attributes.averageRating}
               </p>
-              <p className="mb-0">Status: {mangaDetails.data.status}</p>
-              <p className="mb-0">Type: {mangaDetails.data.type}</p>
-              <p className="mb-0">Published: {mangaDetails.data.published.string}</p>
-              <p className="mb-0">Popularity: {mangaDetails.data.popularity}</p>
-              <p className='mb-0 d-flex align-items-center'> Score: 
-                <svg xmlns="http://www.w3.org/2000/svg" style={{marginLeft: '5px', marginRight: '5px'}} width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                </svg> 
-                {mangaDetails.data.score}</p>
               <hr />
-              <p>{mangaDetails.data.synopsis}</p>
+              <p>{mangaDetails.attributes.synopsis}</p>
 
               {/* Genres */}
               <div>
                 <h5>Genres:</h5>
                 <ul className="list-group d-flex flex-row">
-                  {mangaDetails.data.genres.map((genre) => (
-                    <li key={genre.mal_id} className="list-group-item mr-2">{genre.name}</li>
+                  {genres.map((genre) => (
+                    <li key={genre.id} className="list-group-item mr-2">
+                      {genre.attributes.name}
+                    </li>
                   ))}
                 </ul>
               </div>
-         
 
-              
+              <br />
+
+              {/* Chapters */}
+              <div>
+                <h5>Chapters:</h5>
+                <div className="row">
+                  {chapters.map((chapter) => {
+                    console.log(chapter); // Log the chapter object
+
+                    // Check if chapter.attributes is defined before accessing its properties
+                    const chapterNumber = chapter.id; // Assuming 'number' property holds the number
+                    // const chapterTitle = chapter.attributes?.titles.en_jp; // Add this line to fetch the title
+
+                    return (
+                      <div key={chapter.id} className="col-md-3 mb-3 border border-dark p-2 d-flex justify-content-center">
+                        <Link
+                          to={`/chapter/${chapter.id}`}
+                          className="list-group-item"
+                        >
+                          {`Chapter ${String(chapterNumber)}`}
+                        </Link>
+                      </div>
+                    );
+                  })}
+                </div>
+
+
+              </div>
+
+
+            
             </div>
           </div>
-          
         ) : (
           <p>Loading manga details...</p>
         )}
