@@ -2,7 +2,7 @@ export const fetchMovieSourceCode = async (movieId) => {
     const API_URL = `https://api.themoviedb.org/3/source/${movieId}/source?api_key=6ebf513aac93128d8b5629e503bf7bde`; // Replace 'your-api-key' with your actual TMDb API key
   
     try {
-      const response = await fetch(API_URL);
+      const response = await fetch(`/api/movies/${movieId}/sourcecode`);
       const data = await response.text();
   
       return data;
