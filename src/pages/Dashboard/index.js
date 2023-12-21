@@ -13,44 +13,43 @@ class Dashboard extends Component {
     };
   }
 
-  componentDidMount() {
-    // Fetch anime data when the component mounts
-    this.fetchAnimeData();
-  }
 
   fetchAnimeData = async () => {
-    // Set loading to true before making the API request
+    
     this.setState({ loading: true, error: null });
 
     try {
-      // Make the API request to Consumet for anime
-      const response = await axios.get(`https://api.consumet.org/anime/gogoanime/${this.state.searchTerm}`);
+      
+      const response = await axios.get(`https://kitsu.io/api/edge/manga?filter[text]=${this.state.searchTerm}`);
 
-      // Log the response to the console
+      
       console.log('API response:', response);
 
-      // Update the state with the fetched anime data
-      this.setState({ animeData: response.data.results, loading: false });
+      
+      this.setState({ animeData: response.data.data, loading: false });
     } catch (error) {
-      // Handle errors and update the state with the error message
+      
       console.error('Error fetching anime data:', error);
-      this.setState({
-        error: `An error occurred while fetching anime data: ${error.message || 'Unknown error'}`,
-        loading: false,
-      });
+      this.setState({ error: 'An error occurred while fetching anime data', loading: false });
     }
   };
+
+  componentDidMount() {
+    
+    this.fetchAnimeData();
+  }
 
   handleSearchInputChange = (event) => {
     const searchTerm = event.target.value;
 
-    // Update state and local storage
+    
     this.setState({ searchTerm });
     localStorage.setItem('searchTerm', searchTerm);
   };
 
   handleSearch = () => {
-    // Call fetchAnimeData when the search button is clicked
+    
+    localStorage.setItem('searchTerm', this.state.searchTerm);
     this.fetchAnimeData();
   };
 
@@ -91,33 +90,29 @@ class Dashboard extends Component {
 
         {/* Display the fetched anime data if available */}
         <div>
-          {Array.isArray(animeData) && animeData.length > 0 ? (
+          {animeData && (
             <div className="row mt-3">
               {animeData.map((anime) => (
                 <div key={anime.id} className="col-md-4 mb-3">
                   <div style={{ width: '15rem' }}>
                     <div className="card border border-dark">
-                      <img src={anime.image} alt={anime.title} />
+                      <img src={anime.attributes.posterImage.small} alt={anime.attributes.titles.en} />
                     </div>
                     <div style={{ textDecoration: 'none' }}>
-                      <Link to={`/view/${anime.id}`}>
-                        <center>
-                          <b>
-                            <p>{anime.title}</p>
-                          </b>
-                        </center>
-                      </Link>
+                    <Link to={`/view/${anime.id}`}>
+                      <center>
+                        <b>
+                          <p>{anime.attributes.titles.en}</p>
+                        </b>
+                      </center>
+                    </Link>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
-          ) : (
-            <p>No anime found.</p>
           )}
         </div>
-
-        {/* You can add a Route for displaying the anime details when an anime is clicked */}
       </div>
     );
   }
