@@ -36,9 +36,9 @@ class Main extends Component {
         </Link>                    
       </li>
       <li>
-      <Link to="/dashboard" onClick={() => this.handleClickSidebar('dashboard')}>
-        <div class={this.state.activePage === 'dashboard' ? "nav-link active" : "nav-link"}>
-        Dashboard
+      <Link to="/examplemovie" onClick={() => this.handleClickSidebar('examplemovie')}>
+        <div class={this.state.activePage === 'examplemovie' ? "nav-link active" : "nav-link"}>
+        ExampleMovie
         </div>       
         </Link>
       </li>
@@ -55,14 +55,7 @@ class Main extends Component {
         Movies
         </div>       
         </Link>      
-      </li>  
-      <li>
-      <Link to="/examplemovie" onClick={() => this.handleClickSidebar('examplemovie')}>
-        <div class={this.state.activePage === 'examplemovie' ? "nav-link active" : "nav-link"}>
-        Examplemovie
-        </div>       
-        </Link>      
-      </li>     
+      </li>      
     </ul>
     <hr/>
     <div class="dropdown">
