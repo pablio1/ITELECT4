@@ -5,27 +5,17 @@ import axios from 'axios';
 class Examplemovie extends Component{
   state = {searchAnime: '', Chapter: [], Manga: []};
 
-  /*  getManga = {
-    method: 'GET',
-    url: 'https://mangaverse-api.p.rapidapi.com/manga',
-    params: {
-      title: 'Fullmetal Alchemist'
-    },
-    headers: {
-      'X-RapidAPI-Key': '148729e9c3mshefd0bed8597c91ep15bbcdjsnc774119cf556',
-      'X-RapidAPI-Host': 'mangaverse-api.p.rapidapi.com'
-      }
-  }  */
+  
   handleSearch = e => {
     if(e.key === "Enter"){
-        //API, data, header        
+               
         axios.get("https://manga-scrapper.p.rapidapi.com/webtoons/" + this.state.searchAnime,{
                
                 params:{
                   provider: 'asura'
                 },
                 headers: {
-                  'X-RapidAPI-Key': '148729e9c3mshefd0bed8597c91ep15bbcdjsnc774119cf556',
+                  'X-RapidAPI-Key': ' ',
                   'X-RapidAPI-Host': 'manga-scrapper.p.rapidapi.com'
                 }
         }      
@@ -44,7 +34,7 @@ class Examplemovie extends Component{
         limit: '20'
       },
       headers: {
-        'X-RapidAPI-Key': '148729e9c3mshefd0bed8597c91ep15bbcdjsnc774119cf556',
+        'X-RapidAPI-Key': ' ',
         'X-RapidAPI-Host': 'manga-scrapper.p.rapidapi.com'
       }
        }      
@@ -61,61 +51,14 @@ handleChangeInput = e =>{
         [e.target.name]: e.target.value
     })
 }
-  //   const response = await axios.request(getManga);  
- //  this.setState({
-  //   Manga: response.data.results
-  // });
-     //getChapter(this.state.ID);
+  
    
    render () {
 
- /* const getChapter = {
-    method: 'GET',
-    url: 'https://mangaverse-api.p.rapidapi.com/manga/chapter',
-    params: {
-      id: this.state.ID
-    },
-    headers: {
-      'X-RapidAPI-Key': '148729e9c3mshefd0bed8597c91ep15bbcdjsnc774119cf556',
-      'X-RapidAPI-Host': 'mangaverse-api.p.rapidapi.com'
-      }
-  };
-   try{
-     const response = await axios.request(getChapter);
-    
-     
-     this.setState({
-     Chapters: response?.data
-     
-     });
-     
-      } catch (error) {
-      console.error('error',error);
-   } */
-    //var Lists = Manga.length !== 0 ? Manga.map((data, index) => {
+ 
     const {Manga} = this.state; 
 
-   /* const getChapter = () =>{
-      axios.get("https://manga-scrapper.p.rapidapi.com/chapters",{
-               
-      params:{
-        provider: 'asura',
-        webtoon: this.state.searchAnime,
-        page: '1',
-        limit: '20'
-      },
-      headers: {
-        'X-RapidAPI-Key': '148729e9c3mshefd0bed8597c91ep15bbcdjsnc774119cf556',
-        'X-RapidAPI-Host': 'manga-scrapper.p.rapidapi.com'
-      }
-       }      
-          ).then(response =>{
-           console.log(response.data)
-          this.setState({
-          Chapter: response.data
-          })
-       })   
-    };     */
+   
     
     
     const {Chapter} = this.state;
