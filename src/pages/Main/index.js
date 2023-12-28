@@ -8,6 +8,7 @@ import Updates from '../Bookmarks/Updates';
 import Favorites from '../Bookmarks/Favorites';
 import History from '../Bookmarks/History';
 import Test from '../Test';
+import VideoPlayerPage from '../Video Player';
 
 class Main extends Component {
     state = { activePage: 'dashboard' };
@@ -131,6 +132,7 @@ class Main extends Component {
                         <Route path="/favorites" component={Favorites} />
                         <Route path="/watch-history" component={History} />
                         <Route path="/test" component={Test} />
+                        <Route path="/video/:id" component={VideoPlayerPage} />
                     </Switch>
                 </div>
             </div>

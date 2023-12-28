@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+
 
 class Home extends Component {
   constructor(props) {
@@ -63,6 +65,39 @@ class Home extends Component {
     }));
   };
 
+  handleMovieClick = (movieId) => {
+  const { history } = this.props;
+  const apiKey = 'e0974c020cbeb2405fbcd50373c47001';
+
+  // Fetch movie details
+  const movieDetailsUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&append_to_response=videos`;
+
+  fetch(movieDetailsUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.videos && data.videos.results && data.videos.results.length > 0) {
+        // Assuming you want to use the key of the first video in the results
+        const firstVideoKey = data.videos.results[1].key;
+
+        // Now you can fetch additional details using the video key
+        const videoDetailsUrl = `https://api.themoviedb.org/3/movie/${firstVideoKey}?api_key=${apiKey}&append_to_response=videos`;
+
+        fetch(videoDetailsUrl)
+          .then((response) => response.json())
+          .then((videoData) => {
+            // Use videoData as needed
+            console.log(videoData);
+
+            // Navigate to the video player page with the movieId and video key
+            history.push(`/video/${movieId}?key=${firstVideoKey}`);
+          })
+          .catch((error) => console.error('Error fetching video details:', error));
+      }
+    })
+    .catch((error) => console.error('Error fetching movie details:', error));
+};
+
+
   renderCarouselItems(results) {
     const { activeIndex } = this.state;
 
@@ -72,6 +107,7 @@ class Home extends Component {
       <div
         className={`carousel-item ${index === activeIndex ? 'active' : ''}`}
         key={index}
+        onClick={() => this.handleMovieClick(data.id)}
         style={{ height: '300px', maxWidth: '100%', overflow: 'hidden', backgroundColor: 'black' }}
       >
         <img
@@ -121,7 +157,7 @@ class Home extends Component {
         <h3 style={{ paddingTop: '10px' }}>Action Movies</h3>
         <div style={containerStyle}>
           {actionResults.map((data, index) => (
-            <div key={index} style={cardStyle}>
+            <div key={index} style={cardStyle} onClick={() => this.handleMovieClick(data.id)}>
               {/* Card content, you can customize this as needed */}
               <img
                 src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
@@ -165,7 +201,7 @@ class Home extends Component {
         <h3 style={{ paddingTop: '10px' }}>Comedy Movies</h3>
         <div style={containerStyle}>
           {comedyResults.map((data, index) => (
-            <div key={index} style={cardStyle}>
+            <div key={index} style={cardStyle} onClick={() => this.handleMovieClick(data.id)}>
               {/* Card content, you can customize this as needed */}
               <img
                 src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
@@ -230,4 +266,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default withRouter(Home);
