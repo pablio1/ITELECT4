@@ -40,7 +40,7 @@ const MovieBox = ({ id, title, poster_path, vote_average, release_date, overview
           <Button variant="warning" onClick={handleShowDetails}>View Details</Button>
           <Button variant="danger" className="ml-2" style={{ marginTop: '10px' }}onClick={handlePlay}>
             <Link to={`/play/${id}`} style={{ color: 'white', textDecoration: 'none' }}>
-              Play Movie
+              Watch Now
             </Link>
           </Button>
           {/* View Source Code button */}

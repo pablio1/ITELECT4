@@ -70,8 +70,8 @@ class Main extends Component {
                     <hr/>
                     <div class="dropdown">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/MiaMayOpaon.png" alt="" width="70" height="60" class="rounded-circle me-2"/>
-                        <strong>Mia May Opaon</strong>
+                        <img src="https://github.com/HeryJaneAvila.png" alt="" width="70" height="60" class="rounded-circle me-2"/>
+                        <strong>Hery Jane Avila</strong>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                         <li><a class="dropdown-item" href="#">New project...</a></li>
