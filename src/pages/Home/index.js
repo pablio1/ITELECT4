@@ -21,16 +21,16 @@ export default class Home extends Component {
   fetchAnimeData = async () => {
     // Set loading to true before making the API request
     this.setState({ loading: true, error: null });
-
+  
     try {
-      // Make the API request to Consumet for anime
-      const response = await axios.get(`https://api.consumet.org/anime/gogoanime/${this.state.searchTerm}`);
-
+      // Make the API request to Kitsu for anime
+      const response = await axios.get(`https://kitsu.io/api/edge/anime?filter[text]=${this.state.searchTerm}`);
+  
       // Log the response to the console
       console.log('API response:', response);
-
+  
       // Update the state with the fetched anime data
-      this.setState({ animeData: response.data.results, loading: false });
+      this.setState({ animeData: response.data.data, loading: false });
     } catch (error) {
       // Handle errors and update the state with the error message
       console.error('Error fetching anime data:', error);
@@ -40,6 +40,7 @@ export default class Home extends Component {
       });
     }
   };
+  
 
   handleSearchInputChange = (event) => {
     const searchTerm = event.target.value;
@@ -50,9 +51,13 @@ export default class Home extends Component {
   };
 
   handleSearch = () => {
+    // Update local storage with the new search term
+    localStorage.setItem('searchTerm', this.state.searchTerm);
+  
     // Call fetchAnimeData when the search button is clicked
     this.fetchAnimeData();
   };
+  
 
   render() {
     const { animeData, loading, error, searchTerm } = this.state;
@@ -60,8 +65,8 @@ export default class Home extends Component {
       
       <div className="m-3 bg-dark p-3">
         <div class="jumbotron text-center">
-            <h1 className="text-light">Flixy</h1>
-            <h3 className="text-light">All movies are for free !!!!</h3>
+            <h1 className="text-light">AniFlix</h1>
+            <h3 className="text-light">Animes available here!</h3>
         </div>
         <br></br>
         {/* Search Bar */}
@@ -101,29 +106,27 @@ export default class Home extends Component {
 
         {/* Display the fetched anime data if available */}
         <div>
-          {Array.isArray(animeData) && animeData.length > 0 ? (
+        {animeData && (
             <div className="row mt-3">
               {animeData.map((anime) => (
                 <div key={anime.id} className="col-md-4 mb-3">
                   <div style={{ width: '15rem' }}>
                     <div className="card border border-dark">
-                      <img src={anime.image} alt={anime.title} />
+                      <img src={anime.attributes.posterImage.small} alt={anime.attributes.titles.en} />
                     </div>
                     <div style={{ textDecoration: 'none' }}>
-                      <Link to={`/view/${anime.id}`}>
-                        <center>
-                          <b>
-                            <p>{anime.title}</p>
-                          </b>
-                        </center>
-                      </Link>
+                    <Link to={`/view/${anime.id}`}>
+                      <center>
+                        <b>
+                          <p>{anime.attributes.titles.en}</p>
+                        </b>
+                      </center>
+                    </Link>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
-          ) : (
-            <p>No anime found.</p>
           )}
         </div>
 
