@@ -7,20 +7,34 @@ class AnimeDescription extends Component {
     this.state = {
       animeDetails: null,
       error: null,
+      episodes: [], // Initialize episodes as an empty array
     };
   }
 
-  
-
   fetchAnimeDetails = async () => {
     const { match } = this.props;
-    const mal_id = match.params.mal_id;
+    const animeId = match.params.animeId;
 
     try {
-      const response = await axios.get(`https://api.jikan.moe/v4/anime/${mal_id}`);
-      console.log('Anime Details API response:', response.data);
+      // Fetch anime details
+      const animeResponse = await axios.get(`https://kitsu.io/api/edge/anime/${animeId}`);
+      console.log('Anime Details API response:', animeResponse.data);
 
-      this.setState({ animeDetails: response.data });
+      const animeDetails = animeResponse.data.data || {};
+
+      // Fetch episodes separately
+      const episodesResponse = await axios.get(`https://kitsu.io/api/edge/anime/${animeId}/episodes`);
+      console.log('Episodes API response:', episodesResponse.data);
+
+      const episodes = episodesResponse.data.data || [];
+
+      this.setState({
+        animeDetails: animeDetails,
+        isLoading: false,
+        episodes: episodes,
+      });
+
+      console.log('Episodes:', episodes); // Log episodes after setting the state
     } catch (error) {
       console.error('Error fetching anime details:', error);
       this.setState({ error: 'An error occurred while fetching anime details' });
@@ -31,8 +45,15 @@ class AnimeDescription extends Component {
     this.fetchAnimeDetails();
   }
 
+  // New method to handle episode clicks
+  handleEpisodeClick = (episodeNumber) => {
+    // Add your logic here for handling episode clicks
+    console.log(`User clicked on Episode ${episodeNumber}`);
+    // You can add the logic to navigate to the selected episode here
+  };
+
   render() {
-    const { animeDetails, error } = this.state;
+    const { animeDetails, error, episodes } = this.state;
 
     if (error) {
       return <p>Error: {error}</p>;
@@ -40,61 +61,60 @@ class AnimeDescription extends Component {
 
     return (
       <div className="container mt-5">
-        {animeDetails ? (
-          <div className="d-flex flex-row">
-            <div>
-              <img
-                className="border border-dark"
-                style={{ width: 300 }}
-                src={animeDetails.data.images.jpg.image_url}
-                alt={animeDetails.title}
-              />
-            </div>
-            <div className="px-5">
-              <h2>{animeDetails.data.title}</h2>
-              <p className="mb-0">Rank: {animeDetails.data.rank}</p>
-              <p className="mb-0">Genres: {animeDetails.data.genres.map((genre) => genre.name).join(', ')}</p>
-              <p className="mb-0">Type: {animeDetails.data.type}</p>
-              <p className="mb-0">Episodes: {animeDetails.data.episodes}</p>
-              <p className="mb-0">Status: {animeDetails.data.status}</p>
-              <p className="mb-0">Aired: {animeDetails.data.aired.string}</p>
-              <p className="mb-0 d-flex align-items-center">
-                Score:{' '}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{ marginLeft: '5px', marginRight: '5px' }}
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
-                  />
-                </svg>
-                {animeDetails.data.score}
-              </p>
-              <hr />
-              <p>{animeDetails.data.synopsis}</p>
+      {animeDetails ? (
+        <div className="d-flex flex-row">
+          <div>
+            <img
+              className="border border-dark"
+              style={{ width: 300 }}
+              src={animeDetails.attributes.posterImage.original}
+              alt={animeDetails.attributes.canonicalTitle}
+            />
+          </div>
+          <div className="px-5">
+            <h2>{animeDetails.attributes.canonicalTitle}</h2>
+            <p className="mb-0">Rank: {animeDetails.attributes.rank}</p>
+            <p className="mb-0">Type: {animeDetails.attributes.subtype}</p>
+            <p className="mb-0">Episodes: {animeDetails.attributes.episodeCount}</p>
+            <p className="mb-0">Status: {animeDetails.attributes.status}</p>
+            <p className="mb-0">Aired: {animeDetails.attributes.startDate}</p>
+            <p className="mb-0 d-flex align-items-center">
+              Score: {animeDetails.attributes.averageRating}
+            </p>
+            <hr />
+            <p>{animeDetails.attributes.synopsis}</p>
 
-              {/* Genres */}
-                <div>
+            {/* Genres */}
+            {animeDetails.attributes.genres && (
+              <div>
                 <h5>Genres:</h5>
                 <ul className="list-group d-flex flex-row">
-                    {animeDetails.data.genres.map((genre) => (
-                    <li key={genre.mal_id} className="list-group-item mr-2">
-                        {genre.name}
+                  {animeDetails.attributes.genres.map((genre) => (
+                    <li key={genre.id} className="list-group-item mr-2">
+                      {genre.attributes.name}
                     </li>
-                    ))}
+                  ))}
                 </ul>
-                </div>
+              </div>
+            )}
 
+            {/* Episodes */}
+            <div>
+              <h5>Episodes:</h5>
+              <ul className="list-group d-flex flex-row">
+                {episodes.map((episode) => (
+                  <li key={episode.id} className="list-group-item mr-2">
+                    Episode {episode.attributes.number}: {episode.attributes.titles.en || episode.attributes.titles.en_jp}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-        ) : (
-          <p>Loading anime details...</p>
-        )}
-      </div>
+        </div>
+      ) : (
+        <p>Loading anime details...</p>
+      )}
+    </div>
     );
   }
 }
