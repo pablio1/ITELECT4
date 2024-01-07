@@ -29,11 +29,11 @@ body {
 .image-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly; /* Updated to evenly space the items */
+  justify-content: space-evenly;
 }
 
 .grid-item {
-  width: 30%; /* Updated to set the width of each grid item */
+  width: 30%; 
   margin: 10px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
