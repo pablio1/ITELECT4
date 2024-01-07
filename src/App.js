@@ -2,18 +2,24 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
-import Main from './pages/Main';
+import Main from './pages/Main/index';
+import MangaDescription from './pages/Dashboard/MangaDescription';
+import ChapterDetails from './pages/Dashboard/ChapterDetails';
 
 class App extends Component {
     render() {
         return (
             <Switch>
-                {/* <Route path="/" component = {Main} /> */}
-                <Route path="/login" component = {Login}  />
-                <Route path="/register" component = {Register}  />
-                {/* <Route path="/dashboard" component = {Dashboard} /> */}
-                <Route path="/" component = {Main} />
+                
+                <Route exact path="/view/:mangaId" component={MangaDescription} />
+                <Route path="/chapter/:chapterId" component={ChapterDetails} />
+
+                
+                <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
+                
+                
+                <Route path="/" component={Main} />
             </Switch>
         );
     }
