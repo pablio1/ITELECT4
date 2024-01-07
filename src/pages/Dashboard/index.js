@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import './style.css'; // Import the CSS file
 
 class Dashboard extends Component {
     state = {searchAnime: '', lists: []};
