@@ -92,7 +92,7 @@ class Dashboard extends Component {
         {/* Display the fetched anime data if available */}
         <div>
           {animeData && (
-            <div className="row mt-3">
+            <div className="row mt-3 justify-content-center">
               {animeData.map((anime) => (
                 <div key={anime.id} className="col-md-4 mb-3">
                   <div style={{ width: '15rem' }}>
