@@ -1,74 +1,137 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      animeData: null,
+      loading: false,
+      error: null,
+      searchTerm: localStorage.getItem('searchTerm') || '',
+    };
+  }
+
+  componentDidMount() {
+    // Fetch anime data when the component mounts
+    this.fetchAnimeData();
+  }
+
+  fetchAnimeData = async () => {
+    // Set loading to true before making the API request
+    this.setState({ loading: true, error: null });
+  
+    try {
+      // Make the API request to Kitsu for anime
+      const response = await axios.get(`https://kitsu.io/api/edge/anime?filter[text]=${this.state.searchTerm}`);
+  
+      // Log the response to the console
+      console.log('API response:', response);
+  
+      // Update the state with the fetched anime data
+      this.setState({ animeData: response.data.data, loading: false });
+    } catch (error) {
+      // Handle errors and update the state with the error message
+      console.error('Error fetching anime data:', error);
+      this.setState({
+        error: `An error occurred while fetching anime data: ${error.message || 'Unknown error'}`,
+        loading: false,
+      });
+    }
+  };
+  
+
+  handleSearchInputChange = (event) => {
+    const searchTerm = event.target.value;
+
+    // Update state and local storage
+    this.setState({ searchTerm });
+    localStorage.setItem('searchTerm', searchTerm);
+  };
+
+  handleSearch = () => {
+    // Update local storage with the new search term
+    localStorage.setItem('searchTerm', this.state.searchTerm);
+  
+    // Call fetchAnimeData when the search button is clicked
+    this.fetchAnimeData();
+  };
+  
+
   render() {
+    const { animeData, loading, error, searchTerm } = this.state;
     return (
       
-      <div style={{background:'https://storage.pixteller.com/designs/designs-images/2019-03-27/05/simple-background-backgrounds-passion-simple-1-5c9b95c3a34f9.png'}}>
-        <body>
-
-          
-
-          <div class="jumbotron text-center">
-            <h1>Movies</h1>
-            <h3>Please send Money</h3>
-          </div>
-
-          <div class="container">
-            <form action="/action_page.php">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search" name="search" />
-                <div class="input-group-btn">
-                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                </div>
-              </div>
-            </form>
-          </div>
-          <br></br>
-
-          
-
-          <hr></hr>
-
-
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-2">
-                <img src="https://pbs.twimg.com/media/Dsdlbj3U4AAJoO7.jpg" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" />
-                <h3>Aquaman</h3>
-                <p>genre: Action, Romance</p>
-              </div>
-              <div class="col-sm-2">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0kylEqLF9BAOq_sT_250hBUBbA0X-OEMuBcy4mPfK1Rn6sDSq" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" />
-                <h3>How to train your dragon</h3>
-                <p>genre: Action, Romance</p>
-              </div>
-              <div class="col-sm-2">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgSIszS_hZ5XBSNnQamt1MUJTmpgD4ZHGzkJvoM8owuQg6xWDS" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" />
-                <h3>Bleach</h3>
-                <p>genre: Action, Romance</p>
-              </div>
-              <div class="col-sm-2">
-                <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS148VQcCwjB4BgkrjdLPF7ln5At6Z6xvLMdS8YSUXoksYExx4R" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" />
-                <h3>Uncharted</h3>
-                <p>genre: Action, Romance</p>
-              </div>
-              <div class="col-sm-2">
-                <img src="https://movies.universalpictures.com/media/sing2-560x880-6183d65431022-1.jpg" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" />
-                <h3>Sing2</h3>
-                <p>genre: Action, Romance</p>
-              </div>
-              <div class="col-sm-2">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJApnr9b8RCQjrOr0YpzqMTY1xXWNrfWHgq0VvNxVNUaG9XyrV" class="img-thumbnail" alt="Cinque Terre" width="200" height="200" />
-                <h3>Batman</h3>
-                <p>genre: Action, Romance</p>
-              </div>
+      <div className="m-3 bg-dark p-3">
+        <div class="jumbotron text-center">
+            <h1 className="text-light">AniFlix</h1>
+            <h3 className="text-light">Animes available here!</h3>
+        </div>
+        <br></br>
+        {/* Search Bar */}
+        <div>
+          <div className="d-flex flex-row">
+            <div className="col px-2">
+              <input
+                type="search"
+                className="form-control rounded px-4"
+                placeholder="Search"
+                aria-label="Search"
+                aria-describedby="search-addon"
+                value={searchTerm}
+                onChange={this.handleSearchInputChange}
+              />
+            </div>
+            <br></br>
+            <div className="col-sm-2">
+              <button type="button" className="btn btn-primary mr-2" onClick={this.handleSearch}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+                </svg>
+                Search
+              </button>
             </div>
           </div>
+        </div>
+        <hr></hr>
+        
+        <br></br>
 
-        </body>
+        {/* Display loading message while anime data is being fetched */}
+        {loading && <p>Loading...</p>}
 
+        {/* Display error message if an error occurred */}
+        {error && <p>Error: {error}</p>}
+
+        {/* Display the fetched anime data if available */}
+        <div>
+        {animeData && (
+            <div className="row mt-3">
+              {animeData.map((anime) => (
+                <div key={anime.id} className="col-md-4 mb-3">
+                  <div style={{ width: '15rem' }}>
+                    <div className="card border border-dark">
+                      <img src={anime.attributes.posterImage.small} alt={anime.attributes.titles.en} />
+                    </div>
+                    <div style={{ textDecoration: 'none' }}>
+                    <Link to={`/view/${anime.id}`}>
+                      <center>
+                        <b>
+                          <p>{anime.attributes.titles.en}</p>
+                        </b>
+                      </center>
+                    </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* You can add a Route for displaying the anime details when an anime is clicked */}
       </div>
-    )
+    );
   }
 }

@@ -1,0 +1,59 @@
+import React, { Component } from 'react';
+import axios from 'axios';
+
+class episodes extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      episodeDetails: null,
+      error: null,
+    };
+  }
+
+  fetchEpisodesDetails = async () => {
+    const { match } = this.props;
+    const episodeId = match.params.episodeId;
+
+    try {
+      // Make the API request to Kitsu for episode details
+      const response = await axios.get(`https://kitsu.io/api/edge/episodes/${episodeId}`);
+
+      console.log('Episode Details API response:', response);
+
+      this.setState({
+        episodeDetails: response.data.data,
+        error: null,
+      });
+    } catch (error) {
+      console.error('Error fetching episode details:', error);
+      this.setState({ error: 'An error occurred while fetching episode details' });
+    }
+  };
+
+  componentDidMount() {
+    this.fetchEpisodesDetails();
+  }
+
+  render() {
+    const { episodeDetails, error } = this.state;
+
+    if (error) {
+      return <p>Error: {error}</p>;
+    }
+
+    return (
+      <div className="container mt-5 pb-5">
+        {episodeDetails && episodeDetails.attributes ? (
+          <div>
+            <h2>{episodeDetails.attributes.titles.en}</h2>
+            {/* Display other episode details as needed */}
+          </div>
+        ) : (
+          <p>Loading episode details...</p>
+        )}
+      </div>
+    );
+  }
+}
+
+export default episodes;
