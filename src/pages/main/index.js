@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link, Switch, Route} from 'react-router-dom';
-import Dashboard from '../Dashboard';
+import { Dashboard, ChapterDetails, MangaDescription } from '../Dashboard';
 import Home from '../Home';
 import Orders from '../Orders';
 import Products from '../Products'
