@@ -3,6 +3,7 @@ import { Link, Route } from 'react-router-dom';
 import axios from 'axios';
 import AnimeDetails from './AnimeDetails'; // Import AnimeDetails component
 
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -81,7 +82,7 @@ class Dashboard extends Component {
         {/* ... (existing code) */}
 
         <div>
-          {animeData && (
+        {animeData && (
             <div className="row mt-3 justify-content-center">
               {animeData.map((anime) => (
                 <div key={anime.id} className="col-md-4 mb-3">
@@ -90,8 +91,8 @@ class Dashboard extends Component {
                       <img src={anime.attributes.posterImage.small} alt={anime.attributes.titles.en} />
                     </div>
                     <div style={{ textDecoration: 'none' }}>
-                      {/* Update the Link to navigate to AnimeDetails */}
-                      <Link to={`/view/${anime.id}`}>
+                      {/* Update the Link to navigate to AnimeDetails with the correct URL */}
+                      <Link to={`/manga/${anime.id}`}>
                         <center>
                           <b>
                             <p>{anime.attributes.titles.en}</p>
